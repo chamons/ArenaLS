@@ -55,6 +55,7 @@
     <Compile Include="Scenes\CombatScene.cs" />
     <Compile Include="Scenes\IScene.cs" />
     <Compile Include="Scenes\Map\TilesetLoader.cs" />
+    <Compile Include="Scenes\Map\TilesetRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ArenaLS.Platform\ArenaLS.Platform.csproj">

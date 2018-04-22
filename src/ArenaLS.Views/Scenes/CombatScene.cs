@@ -38,6 +38,14 @@ namespace ArenaLS.Views.Scenes
 		{
 		}
 
+		public void OnRelease (SKPointI point)
+		{
+		}
+
+		public void OnDetailRelease (SKPointI point)
+		{
+		}
+
 		public void HandleKeyDown (string character)
 		{
 		}

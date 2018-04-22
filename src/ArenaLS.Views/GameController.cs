@@ -16,10 +16,13 @@ namespace ArenaLS
 		{
 			GameWindow = gameWindow;
 			GameWindow.OnPaint += OnPaint;
-			GameWindow.OnPress += OnPress;
-			GameWindow.OnDetailPress += OnDetailPress;
 			GameWindow.OnKeyDown += OnKeyDown;
 			GameWindow.OnQuit += OnQuit;
+
+			GameWindow.OnPress += OnPress;
+			GameWindow.OnDetailPress += OnDetailPress;
+			GameWindow.OnRelease += OnRelease;
+			GameWindow.OnDetailRelease += OnDetailRelease;
 		}
 
 		public void Startup (IFileStorage storage)
@@ -56,6 +59,16 @@ namespace ArenaLS
 		void OnDetailPress (object sender, ClickEventArgs e)
 		{
 			CurrentScene.OnDetailPress (e.Position);
+		}
+
+		void OnRelease (object sender, ClickEventArgs e)
+		{
+			CurrentScene.OnRelease (e.Position);
+		}
+
+		void OnDetailRelease (object sender, ClickEventArgs e)
+		{
+			CurrentScene.OnDetailRelease (e.Position);
 		}
 
 		void OnPaint (object sender, PaintEventArgs e)

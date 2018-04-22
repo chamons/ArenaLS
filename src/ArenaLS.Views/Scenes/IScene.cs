@@ -7,6 +7,9 @@ namespace ArenaLS.Views.Scenes
 
 		void OnPress (SKPointI point);
 		void OnDetailPress (SKPointI point);
+		void OnRelease (SKPointI point);
+		void OnDetailRelease (SKPointI point);
+
 		void HandleKeyDown (string character);
 
 		void Invalidate ();

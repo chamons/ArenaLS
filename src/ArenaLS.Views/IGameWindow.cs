@@ -28,8 +28,12 @@ namespace ArenaLS.Views
 		void Close ();
 
 		event EventHandler<PaintEventArgs> OnPaint;
-		event EventHandler<ClickEventArgs> OnDetailPress;
+
 		event EventHandler<ClickEventArgs> OnPress;
+		event EventHandler<ClickEventArgs> OnDetailPress;
+		event EventHandler<ClickEventArgs> OnRelease;
+		event EventHandler<ClickEventArgs> OnDetailRelease;
+
 		event EventHandler<KeyEventArgs> OnKeyDown;
 		event EventHandler<EventArgs> OnQuit;
 	}

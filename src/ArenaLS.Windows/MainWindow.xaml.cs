@@ -17,8 +17,12 @@ namespace ArenaLS.Windows
 
 		public event EventHandler<PaintEventArgs> OnPaint;
 		public event EventHandler<ClickEventArgs> OnPress;
-		public new event EventHandler<KeyEventArgs> OnKeyDown;
 		public event EventHandler<ClickEventArgs> OnDetailPress;
+
+		public event EventHandler<ClickEventArgs> OnRelease;
+		public event EventHandler<ClickEventArgs> OnDetailRelease;
+
+		public new event EventHandler<KeyEventArgs> OnKeyDown;
 
 		public event EventHandler<EventArgs> OnQuit;
 		System.Windows.Media.Matrix Transform;
@@ -59,24 +63,23 @@ namespace ArenaLS.Windows
 
 		void OnPlatformMouseDown (object sender, System.Windows.Input.MouseButtonEventArgs e)
 		{
-			if (e.ChangedButton == System.Windows.Input.MouseButton.Right)
-			{
-				Point p = e.GetPosition (null);
-				ClickArgs.Position = new SKPointI ((int)p.X, (int)p.Y);
-				OnDetailPress?.Invoke (this, ClickArgs);
-			}
+			EventHandler<ClickEventArgs> currentEvent = e.ChangedButton == System.Windows.Input.MouseButton.Left ? OnPress : OnDetailPress;
+			ClickArgs.Position = GetMousePosition (e);
+			currentEvent?.Invoke (this, ClickArgs);
 		}
 
 		void OnPlatformMouseUp (object sender, System.Windows.Input.MouseButtonEventArgs e)
 		{
-			if (e.ChangedButton == System.Windows.Input.MouseButton.Left)
-			{
-				Point p = e.GetPosition (null);
-				p = Transform.Transform (p);
+			EventHandler<ClickEventArgs> currentEvent = e.ChangedButton == System.Windows.Input.MouseButton.Left ? OnRelease : OnDetailRelease;
+			ClickArgs.Position = GetMousePosition (e);
+			currentEvent?.Invoke (this, ClickArgs);
+		}
 
-				ClickArgs.Position = new SKPointI ((int)p.X, (int)p.Y);
-				OnPress?.Invoke (this, ClickArgs);
-			}
+		SKPointI GetMousePosition (System.Windows.Input.MouseButtonEventArgs e)
+		{
+			Point p = e.GetPosition (null);
+			p = Transform.Transform (p);
+			return new SKPointI ((int)p.X, (int)p.Y);
 		}
 
 		void OnPlatformKeyDown (object sender, System.Windows.Input.KeyEventArgs e)

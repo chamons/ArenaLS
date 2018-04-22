@@ -1,14 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using ArenaLS.Platform;
 using ArenaLS.Views;
+using ArenaLS.Views.Scenes;
 
 namespace ArenaLS
 {
 	public class GameController
 	{
 		public IGameWindow GameWindow { get; }
+		IScene CurrentScene;
+
 		ILogger Log;
 
 		public GameController (IGameWindow gameWindow)
@@ -26,6 +27,10 @@ namespace ArenaLS
 			Dependencies.Register<ILogger> (typeof (Logger));
 			Dependencies.RegisterInstance<IFileStorage> (storage);
 
+			var combatScene = new CombatScene (this);
+			combatScene.Load ("BeachMap");
+			CurrentScene = combatScene;
+
 			Log = Dependencies.Get <ILogger>();
 		}
 
@@ -40,19 +45,22 @@ namespace ArenaLS
 
 		void OnKeyDown (object sender, KeyEventArgs e)
 		{
+			CurrentScene.HandleKeyDown (e.Character);
 		}
 
 		void OnPress (object sender, ClickEventArgs e)
 		{
+			CurrentScene.OnPress (e.Position);
 		}
 
 		void OnDetailPress (object sender, ClickEventArgs e)
 		{
+			CurrentScene.OnDetailPress (e.Position);
 		}
 
 		void OnPaint (object sender, PaintEventArgs e)
 		{
-			e.Surface.Canvas.DrawColor (new SkiaSharp.SKColor (255, 0, 0));
+			CurrentScene.HandlePaint (e.Surface);
 		}
 	}
 }

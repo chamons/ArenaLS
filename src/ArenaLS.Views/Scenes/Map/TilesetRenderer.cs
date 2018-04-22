@@ -5,24 +5,22 @@ namespace ArenaLS.Views.Scenes.Map
 {
 	class TilesetRenderer
 	{
-		public const float Scale = 2f;
-
-		public static SKSurface Render (MapLoader mapLoader)
+		public static SKSurface Render (MapLoader mapLoader, float scale)
 		{
 			var tilesetLoader = new TilesetLoader (mapLoader.TilesetName, mapLoader.TileSize);
 
-			int backgroundHeight = (int)Math.Round (mapLoader.MapPixelHeight * Scale);
-			int backgroundWidth = (int)Math.Round (mapLoader.MapPixelWidth * Scale);
+			int backgroundHeight = (int)Math.Round (mapLoader.MapPixelHeight * scale);
+			int backgroundWidth = (int)Math.Round (mapLoader.MapPixelWidth * scale);
 
 			var background = SKSurface.Create (new SKImageInfo (backgroundHeight, backgroundWidth));
 
-			DrawBackgroundLayer (background, mapLoader, tilesetLoader, 0);
-			DrawBackgroundLayer (background, mapLoader, tilesetLoader, 1);
+			DrawBackgroundLayer (background, mapLoader, tilesetLoader, 0, scale);
+			DrawBackgroundLayer (background, mapLoader, tilesetLoader, 1, scale);
 
 			return background;
 		}
 
-		static void DrawBackgroundLayer (SKSurface surface, MapLoader mapLoader, TilesetLoader tilesetLoader, int index)
+		static void DrawBackgroundLayer (SKSurface surface, MapLoader mapLoader, TilesetLoader tilesetLoader, int index, float scale)
 		{
 			var terrainTiles = mapLoader.GetTiles (index);
 
@@ -32,18 +30,18 @@ namespace ArenaLS.Views.Scenes.Map
 				{
 					int id = terrainTiles [x, y] - 1;
 					var tilesetRect = tilesetLoader.GetRect (id);
-					var renderRect = GetRenderRect (x, y, mapLoader.TileSize);
+					var renderRect = GetRenderRect (x, y, mapLoader.TileSize, scale);
 
 					surface.Canvas.DrawBitmap (tilesetLoader.Tileset, tilesetRect, renderRect);
 				}
 			}
 		}
 
-		static SKRect GetRenderRect (int x, int y, int tileSize)
+		static SKRect GetRenderRect (int x, int y, int tileSize, float scale)
 		{
-			float left = x * tileSize * Scale;
-			float top = y * tileSize * Scale;
-			float size = tileSize * Scale;
+			float left = x * tileSize * scale;
+			float top = y * tileSize * scale;
+			float size = tileSize * scale;
 
 			return SKRect.Create (left, top, size, size);
 		}

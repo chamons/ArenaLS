@@ -17,12 +17,15 @@ namespace ArenaLS.Views.Scenes
 		public void Load (string mapName)
 		{
 			var mapLoader = new MapLoader ($"maps/{mapName}.tmx");
-			Background = TilesetRenderer.Render (mapLoader);
+			Background = TilesetRenderer.Render (mapLoader, 2f);
 		}
+
+		int offsetX = -205;
+		int offsetY = -325;
 
 		public void HandlePaint (SKSurface surface)
 		{
-			Background.Draw (surface.Canvas, 0, 0, null);
+			Background.Draw (surface.Canvas, offsetX, offsetY, null);
 		}
 
 		public void Invalidate ()

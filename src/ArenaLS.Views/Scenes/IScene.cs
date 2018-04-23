@@ -3,7 +3,7 @@ namespace ArenaLS.Views.Scenes
 {
 	internal interface IScene
 	{
-		void HandlePaint (SKSurface surface);
+		void HandlePaint (SKSurface surface, long frame);
 
 		void OnPress (SKPointI point);
 		void OnDetailPress (SKPointI point);

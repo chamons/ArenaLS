@@ -26,6 +26,9 @@ namespace ArenaLS.Views
 	{
 		void Invalidate ();
 		void Close ();
+		void StartAnimationTimer ();
+
+		long Frame { get; }
 
 		event EventHandler<PaintEventArgs> OnPaint;
 

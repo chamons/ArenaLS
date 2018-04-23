@@ -35,6 +35,8 @@ namespace ArenaLS
 			CurrentScene = combatScene;
 
 			Log = Dependencies.Get <ILogger>();
+
+			GameWindow.StartAnimationTimer ();
 		}
 
 		public void Invalidate ()
@@ -73,7 +75,7 @@ namespace ArenaLS
 
 		void OnPaint (object sender, PaintEventArgs e)
 		{
-			CurrentScene.HandlePaint (e.Surface);
+			CurrentScene.HandlePaint (e.Surface, GameWindow.Frame);
 		}
 	}
 }

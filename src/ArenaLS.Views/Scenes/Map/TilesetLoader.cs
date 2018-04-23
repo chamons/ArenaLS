@@ -6,16 +6,22 @@ namespace ArenaLS.Views.Scenes.Map
 	class TilesetLoader
 	{
 		public SKBitmap Tileset { get; }
-		readonly int TileSize;
+		readonly int TileWidth;
+		readonly int TileHeight;
 		readonly int WidthInTiles;
 		readonly int HeightInTiles;
 
-		public TilesetLoader (string name, int tileSize)
+		public TilesetLoader (string path, int tileSize) : this (path, tileSize, tileSize)
 		{
-			Tileset = SKBitmap.Decode ($"maps/{name}.png");
-			TileSize = tileSize;
-			WidthInTiles = Tileset.Width / TileSize;
-			HeightInTiles = Tileset.Height / TileSize;
+		}
+
+		public TilesetLoader (string path, int tileWidth, int tileHeight)
+		{
+			Tileset = SKBitmap.Decode (path);
+			TileWidth = tileWidth;
+			TileHeight = tileHeight;
+			WidthInTiles = Tileset.Width / TileWidth;
+			HeightInTiles = Tileset.Height / TileHeight;
 		}
 
 		public SKRect GetRect (int id)
@@ -23,7 +29,7 @@ namespace ArenaLS.Views.Scenes.Map
 			int column = id % WidthInTiles;
 			int row = (int)Math.Floor ((double)id / (double)WidthInTiles);
 
-			return SKRect.Create (TileSize * column, TileSize * row, TileSize, TileSize);
+			return SKRect.Create (TileWidth * column, TileHeight * row, TileWidth, TileHeight);
 		}
 	}
 }

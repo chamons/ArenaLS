@@ -3,11 +3,11 @@ using System;
 
 namespace ArenaLS.Views.Scenes.Map
 {
-	class TilesetRenderer
+	class BackgroundRenderer
 	{
 		public static SKSurface Render (MapLoader mapLoader, float scale)
 		{
-			var tilesetLoader = new TilesetLoader (mapLoader.TilesetName, mapLoader.TileSize);
+			var tilesetLoader = new TilesetLoader ($"data/maps/{mapLoader.TilesetName}.png", mapLoader.TileSize);
 
 			int backgroundHeight = (int)Math.Round (mapLoader.MapPixelHeight * scale);
 			int backgroundWidth = (int)Math.Round (mapLoader.MapPixelWidth * scale);

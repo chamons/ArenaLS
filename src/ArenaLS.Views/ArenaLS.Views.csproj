@@ -50,12 +50,13 @@
   <ItemGroup>
     <Compile Include="GameController.cs" />
     <Compile Include="IGameWindow.cs" />
+    <Compile Include="Scenes\Map\CharacterRenderer.cs" />
     <Compile Include="Scenes\Map\MapLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scenes\CombatScene.cs" />
     <Compile Include="Scenes\IScene.cs" />
     <Compile Include="Scenes\Map\TilesetLoader.cs" />
-    <Compile Include="Scenes\Map\TilesetRenderer.cs" />
+    <Compile Include="Scenes\Map\BackgroundRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ArenaLS.Platform\ArenaLS.Platform.csproj">
@@ -64,24 +65,233 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\..\..\ArenaLS-data\images\characters\animals1.png">
+      <Link>data\characters\animals1.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\characters\bonus1.png">
+      <Link>data\characters\bonus1.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\characters\chara2.png">
+      <Link>data\characters\chara2.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\characters\chara3.png">
+      <Link>data\characters\chara3.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\characters\chara4.png">
+      <Link>data\characters\chara4.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\characters\chara5.png">
+      <Link>data\characters\chara5.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\characters\military1.png">
+      <Link>data\characters\military1.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\characters\military2.png">
+      <Link>data\characters\military2.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\characters\military3.png">
+      <Link>data\characters\military3.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\characters\npc1.png">
+      <Link>data\characters\npc1.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\characters\npc2.png">
+      <Link>data\characters\npc2.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\characters\npc3.png">
+      <Link>data\characters\npc3.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\characters\npc4.png">
+      <Link>data\characters\npc4.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\dwarfelf\dwarf1.png">
+      <Link>data\characters\dwarf1.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\dwarfelf\dwarf2.png">
+      <Link>data\characters\dwarf2.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\dwarfelf\elf1.png">
+      <Link>data\characters\elf1.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\dwarfelf\elf2.png">
+      <Link>data\characters\elf2.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\monsters\%24monster_bird1.png">
+      <Link>data\characters\%24monster_bird1.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\monsters\%24monster_bird2.png">
+      <Link>data\characters\%24monster_bird2.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\monsters\%24monster_bird3.png">
+      <Link>data\characters\%24monster_bird3.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\monsters\%24monster_boar.png">
+      <Link>data\characters\%24monster_boar.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\monsters\%24monster_cacto.png">
+      <Link>data\characters\%24monster_cacto.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\monsters\%24monster_dknight1.png">
+      <Link>data\characters\%24monster_dknight1.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\monsters\%24monster_dknight2.png">
+      <Link>data\characters\%24monster_dknight2.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\monsters\%24monster_elk.png">
+      <Link>data\characters\%24monster_elk.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\monsters\%24monster_golem1.png">
+      <Link>data\characters\%24monster_golem1.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\monsters\%24monster_golem2.png">
+      <Link>data\characters\%24monster_golem2.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\monsters\%24monster_lich.png">
+      <Link>data\characters\%24monster_lich.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\monsters\%24monster_lizardman1.png">
+      <Link>data\characters\%24monster_lizardman1.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\monsters\%24monster_lizardman2.png">
+      <Link>data\characters\%24monster_lizardman2.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\monsters\%24monster_minotaur.png">
+      <Link>data\characters\%24monster_minotaur.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\monsters\%24monster_phoenix.png">
+      <Link>data\characters\%24monster_phoenix.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\monsters\%24monster_raptor1.png">
+      <Link>data\characters\%24monster_raptor1.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\monsters\%24monster_raptor2.png">
+      <Link>data\characters\%24monster_raptor2.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\monsters\%24monster_treant.png">
+      <Link>data\characters\%24monster_treant.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\monsters\%24monster_wolf1.png">
+      <Link>data\characters\%24monster_wolf1.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\monsters\%24monster_wolf2.png">
+      <Link>data\characters\%24monster_wolf2.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\monsters\chara6.png">
+      <Link>data\characters\chara6.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\monsters\chara7.png">
+      <Link>data\characters\chara7.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\monsters\chara8.png">
+      <Link>data\characters\chara8.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\monsters\elemental.png">
+      <Link>data\characters\elemental.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\monsters\monster1.png">
+      <Link>data\characters\monster1.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\monsters\monster2.png">
+      <Link>data\characters\monster2.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\monsters\monster3.png">
+      <Link>data\characters\monster3.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\monsters\monster4.png">
+      <Link>data\characters\monster4.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\monsters\mount1.png">
+      <Link>data\characters\mount1.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\monsters\mount2.png">
+      <Link>data\characters\mount2.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\monsters\npc5.png">
+      <Link>data\characters\npc5.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\monsters\npc6.png">
+      <Link>data\characters\npc6.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\monsters\orc1.png">
+      <Link>data\characters\orc1.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\monsters\orc2.png">
+      <Link>data\characters\orc2.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\monsters\wizard.png">
+      <Link>data\characters\wizard.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="..\..\..\ArenaLS-data\maps\beach\BeachMap.tmx">
-      <Link>maps\BeachMap.tmx</Link>
+      <Link>data\maps\BeachMap.tmx</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\..\..\ArenaLS-data\maps\beach\beach_tileset.tsx">
-      <Link>maps\beach_tileset.tsx</Link>
+      <Link>data\maps\beach_tileset.tsx</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\..\..\ArenaLS-data\images\beach\beach_tileset.png">
-      <Link>maps\beach_tileset.png</Link>
+      <Link>data\maps\beach_tileset.png</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\SkiaSharp.1.60.0\build\net45\SkiaSharp.targets" Condition="Exists('..\packages\SkiaSharp.1.60.0\build\net45\SkiaSharp.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

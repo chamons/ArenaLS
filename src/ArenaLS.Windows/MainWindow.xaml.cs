@@ -1,9 +1,8 @@
-﻿using System;
-using System.Windows;
+﻿using ArenaLS.Utilities;
 using ArenaLS.Views;
 using SkiaSharp;
-using ArenaLS.Utilities;
-
+using System;
+using System.Windows;
 using Point = System.Windows.Point;
 
 namespace ArenaLS.Windows
@@ -26,6 +25,8 @@ namespace ArenaLS.Windows
 
 		public event EventHandler<EventArgs> OnQuit;
 		System.Windows.Media.Matrix Transform;
+		System.Windows.Threading.DispatcherTimer Timer;
+		public long Frame { get; private set; } = 0;
 
 		public MainWindow ()
 		{
@@ -35,6 +36,19 @@ namespace ArenaLS.Windows
 			TextInput += OnPlatformTextEnter;
 			KeyDown += OnPlatformKeyDown;
 			Closed += OnPlatformClose;
+
+		}
+
+		public void StartAnimationTimer ()
+		{
+			Timer = new System.Windows.Threading.DispatcherTimer ();
+			Timer.Tick += (o, e) =>
+			{
+				Frame++;
+				Invalidate (); // This is a bit lazy				
+			};
+			Timer.Interval = new TimeSpan (0, 0, 0, 0, 33);
+			Timer.Start ();
 		}
 
 		public void Invalidate ()

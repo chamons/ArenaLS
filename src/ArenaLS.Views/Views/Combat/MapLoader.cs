@@ -1,6 +1,6 @@
 ﻿using TiledSharp;
 
-namespace ArenaLS.Views.Scenes.Map
+namespace ArenaLS.Views.Views.Combat
 {
 	class MapLoader
 	{

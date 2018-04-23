@@ -50,18 +50,25 @@
   <ItemGroup>
     <Compile Include="GameController.cs" />
     <Compile Include="IGameWindow.cs" />
-    <Compile Include="Scenes\Map\CharacterRenderer.cs" />
-    <Compile Include="Scenes\Map\MapLoader.cs" />
+    <Compile Include="Views\Combat\CharacterRenderer.cs" />
+    <Compile Include="Views\Combat\MapLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scenes\CombatScene.cs" />
     <Compile Include="Scenes\IScene.cs" />
-    <Compile Include="Scenes\Map\TilesetLoader.cs" />
-    <Compile Include="Scenes\Map\BackgroundRenderer.cs" />
+    <Compile Include="Views\SkillBarView.cs" />
+    <Compile Include="Views\TilesetLoader.cs" />
+    <Compile Include="Views\Combat\BackgroundRenderer.cs" />
+    <Compile Include="Views\CombatView.cs" />
+    <Compile Include="Views\View.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ArenaLS.Platform\ArenaLS.Platform.csproj">
       <Project>{1f2a037d-51cd-408f-8e84-4fceb34226f6}</Project>
       <Name>ArenaLS.Platform</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ArenaLS\ArenaLS.csproj">
+      <Project>{82f830e1-c6be-4235-b800-a3d7c215b31a}</Project>
+      <Name>ArenaLS</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -131,6 +138,10 @@
     </Content>
     <Content Include="..\..\..\ArenaLS-data\images\dwarfelf\elf2.png">
       <Link>data\characters\elf2.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\farmform\tf_icon_32.png">
+      <Link>data\tf_icon_32.png</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\..\..\ArenaLS-data\images\monsters\%24monster_bird1.png">

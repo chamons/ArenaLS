@@ -10,7 +10,7 @@ namespace ArenaLS.Views.Scenes
 		CombatView CombatView;
 
 		readonly Point CombatOffset = new Point (0, 0);
-		readonly Size CombatSize = new Size (1000, 640);
+		readonly Size CombatSize = new Size (1000, 720);
 
 		public CombatScene (GameController controller)
 		{

@@ -31,6 +31,7 @@ namespace ArenaLS
 			Dependencies.RegisterInstance<IFileStorage> (storage);
 
 			var combatScene = new CombatScene (this);
+			// TestData
 			combatScene.Load ("BeachMap");
 			CurrentScene = combatScene;
 

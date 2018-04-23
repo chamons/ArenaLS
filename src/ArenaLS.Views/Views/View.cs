@@ -31,15 +31,18 @@ namespace ArenaLS.Views.Views
 
 		protected SKSurface Surface { get; private set; }
 		protected SKCanvas Canvas { get; private set; }
+		protected virtual bool ClearCanvas => false;
 
 		public virtual SKSurface Draw (long frame)
 		{
 			Canvas = Surface.Canvas;
-			Canvas.DrawRect (VisualRect, new SKPaint () { Color = SKColors.Black });
+			if (ClearCanvas)
+				Canvas.DrawRect (VisualRect, new SKPaint () { Color = SKColors.Black });
 
 			return Surface;
 		}
 
 		public abstract HitTestResults HitTest (SKPointI point);
+		
 	}
 }

@@ -55,6 +55,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scenes\CombatScene.cs" />
     <Compile Include="Scenes\IScene.cs" />
+    <Compile Include="Views\SkillBarView.cs" />
     <Compile Include="Views\TilesetLoader.cs" />
     <Compile Include="Views\Combat\BackgroundRenderer.cs" />
     <Compile Include="Views\CombatView.cs" />
@@ -137,6 +138,10 @@
     </Content>
     <Content Include="..\..\..\ArenaLS-data\images\dwarfelf\elf2.png">
       <Link>data\characters\elf2.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\ArenaLS-data\images\farmform\tf_icon_32.png">
+      <Link>data\tf_icon_32.png</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\..\..\ArenaLS-data\images\monsters\%24monster_bird1.png">

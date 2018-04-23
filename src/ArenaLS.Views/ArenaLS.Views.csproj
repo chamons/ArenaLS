@@ -64,20 +64,21 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\..\ArenaLS-data\beach\BeachMap.tmx">
+    <Content Include="..\..\..\ArenaLS-data\maps\beach\BeachMap.tmx">
       <Link>maps\BeachMap.tmx</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\..\ArenaLS-data\beach\beach_tileset.png">
-      <Link>maps\beach_tileset.png</Link>
+    <Content Include="..\..\..\ArenaLS-data\maps\beach\beach_tileset.tsx">
+      <Link>maps\beach_tileset.tsx</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="maps\beach_tileset.tsx">
+    <Content Include="..\..\..\ArenaLS-data\images\beach\beach_tileset.png">
+      <Link>maps\beach_tileset.png</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

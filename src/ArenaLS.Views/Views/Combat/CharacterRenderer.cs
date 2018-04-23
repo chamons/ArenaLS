@@ -1,6 +1,6 @@
 ﻿using SkiaSharp;
 
-namespace ArenaLS.Views.Scenes.Combat
+namespace ArenaLS.Views.Views.Combat
 {
 	class CharacterRenderer
 	{

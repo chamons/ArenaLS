@@ -1,11 +1,6 @@
 ﻿using SkiaSharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ArenaLS.Views.Scenes.Map
+namespace ArenaLS.Views.Scenes.Combat
 {
 	class CharacterRenderer
 	{
@@ -22,11 +17,11 @@ namespace ArenaLS.Views.Scenes.Map
 			Height = height;
 		}
 
-		const int CharacterAnimationFrames = 3;
-		const int CharacterWidth = 26;
-		const int CharacterHeight = 36;
 		public static CharacterRenderer CreateNormalSized (string path, int startingID, bool doubleSize)
 		{
+			const int CharacterWidth = 26;
+			const int CharacterHeight = 36;
+
 			int width = doubleSize ? CharacterWidth * 2 : CharacterWidth;
 			int height = doubleSize ? CharacterHeight * 2 : CharacterHeight;
 
@@ -34,19 +29,20 @@ namespace ArenaLS.Views.Scenes.Map
 			return new CharacterRenderer (loader, startingID, CharacterWidth * 2, CharacterHeight * 2);
 		}
 
-		const int ExtreLargeMonsterWidth = 122;
-		const int ExtreLargeMonsterHeight = 114;
 		public static CharacterRenderer CreateExtraLarge (string path, int startingID)
 		{
+			const int ExtreLargeMonsterWidth = 122;
+			const int ExtreLargeMonsterHeight = 114;
+
 			TilesetLoader loader = new TilesetLoader (path, ExtreLargeMonsterWidth, ExtreLargeMonsterHeight);
 			return new CharacterRenderer (loader, startingID, ExtreLargeMonsterWidth, ExtreLargeMonsterHeight);
 		}
 
-		const int FramesBetweenAnimation = 10;
 		readonly int [] FrameOffset = new int [] { 1, 0, 1, 2 };
-
 		int CalculateAnimationOffset (long frame)
 		{
+			const int FramesBetweenAnimation = 10;
+
 			return FrameOffset [(int)((frame / FramesBetweenAnimation) % 4)];		
 		}
 

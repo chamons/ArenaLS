@@ -1,7 +1,7 @@
 ﻿using SkiaSharp;
 using System;
 
-namespace ArenaLS.Views.Scenes.Map
+namespace ArenaLS.Views.Scenes.Combat
 {
 	class BackgroundRenderer
 	{

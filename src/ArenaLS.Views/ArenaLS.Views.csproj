@@ -50,13 +50,13 @@
   <ItemGroup>
     <Compile Include="GameController.cs" />
     <Compile Include="IGameWindow.cs" />
-    <Compile Include="Scenes\Map\CharacterRenderer.cs" />
-    <Compile Include="Scenes\Map\MapLoader.cs" />
+    <Compile Include="Scenes\Combat\CharacterRenderer.cs" />
+    <Compile Include="Scenes\Combat\MapLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scenes\CombatScene.cs" />
+    <Compile Include="Scenes\Combat\CombatScene.cs" />
     <Compile Include="Scenes\IScene.cs" />
-    <Compile Include="Scenes\Map\TilesetLoader.cs" />
-    <Compile Include="Scenes\Map\BackgroundRenderer.cs" />
+    <Compile Include="Scenes\Combat\TilesetLoader.cs" />
+    <Compile Include="Scenes\Combat\BackgroundRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ArenaLS.Platform\ArenaLS.Platform.csproj">

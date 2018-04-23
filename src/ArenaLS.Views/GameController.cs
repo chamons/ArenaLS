@@ -2,6 +2,7 @@
 using ArenaLS.Platform;
 using ArenaLS.Views;
 using ArenaLS.Views.Scenes;
+using ArenaLS.Views.Scenes.Combat;
 
 namespace ArenaLS
 {

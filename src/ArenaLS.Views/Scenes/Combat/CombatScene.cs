@@ -1,9 +1,8 @@
 ﻿using SkiaSharp;
 
-using ArenaLS.Views.Scenes.Map;
 using System.Collections.Generic;
 
-namespace ArenaLS.Views.Scenes
+namespace ArenaLS.Views.Scenes.Combat
 {
 	class CombatScene : IScene
 	{

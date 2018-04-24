@@ -20,14 +20,14 @@ namespace ArenaLS.Views.Views
 		const int CellSize = 32;
 		const bool ShowHotkey = true;
 
-		string [] CellLabels = new string [MaxNumberOfSkills] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=", "[", "]", "\\" };
+		readonly string [] CellLabels = new string [MaxNumberOfSkills] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=", "[", "]", "\\" };
 
-		SKPaint CooldownPaint = new SKPaint () { Color = SKColors.Black.WithAlpha (220) };
-		SKPaint BlackPaint = new SKPaint () { Color = SKColors.Black.WithAlpha (220) };
-		SKPaint AntialiasPaint = new SKPaint () { IsAntialias = false };
-		SKPaint CellText = new SKPaint () { Color = SKColors.White, TextSize = 10, TextAlign = SKTextAlign.Center };
-		SKPaint CellTextDark = new SKPaint () { Color = SKColors.White.WithAlpha (50), TextSize = 10, TextAlign = SKTextAlign.Center };
-		SKPaint CellBorder = new SKPaint () { Color = SKColors.White, StrokeWidth = 2, IsStroke = true };
+		readonly SKPaint CooldownPaint = new SKPaint () { Color = SKColors.Black.WithAlpha (220) };
+		readonly SKPaint BlackPaint = new SKPaint () { Color = SKColors.Black.WithAlpha (220) };
+		readonly SKPaint AntialiasPaint = new SKPaint () { IsAntialias = false };
+		readonly SKPaint CellText = new SKPaint () { Color = SKColors.White, TextSize = 10, TextAlign = SKTextAlign.Center };
+		readonly SKPaint CellTextDark = new SKPaint () { Color = SKColors.White.WithAlpha (50), TextSize = 10, TextAlign = SKTextAlign.Center };
+		readonly SKPaint CellBorder = new SKPaint () { Color = SKColors.White, StrokeWidth = 2, IsStroke = true };
 
 		SKRect RectForSkill (int i)
 		{

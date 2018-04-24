@@ -6,8 +6,8 @@ namespace ArenaLS.Views.Views
 	class TilesetLoader
 	{
 		public SKBitmap Tileset { get; }
-		readonly int TileWidth;
-		readonly int TileHeight;
+		public readonly int TileWidth;
+		public readonly int TileHeight;
 		readonly int WidthInTiles;
 		readonly int HeightInTiles;
 

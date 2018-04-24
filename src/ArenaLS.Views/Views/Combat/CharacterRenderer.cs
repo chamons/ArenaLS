@@ -2,54 +2,89 @@
 
 namespace ArenaLS.Views.Views.Combat
 {
-	class CharacterRenderer
-	{
-		TilesetLoader Loader;
-		int StartingID;
-		int Width;
-		int Height;
+	enum CharacterStyle { Normal, Double, ExtraLarge }
 
-		CharacterRenderer (TilesetLoader loader, int startingID, int width, int height)
+	struct CharacterStyleInfo
+	{
+		public static CharacterStyleInfo [] Styles = new CharacterStyleInfo [] {
+			new CharacterStyleInfo (26, 36, 52, 72, 60, 30, -55, 16),
+			new CharacterStyleInfo (52, 72, 52, 72, 60, 30, -55, 16),
+			new CharacterStyleInfo (122, 114, 122, 114, 21, 152, 29, 127),
+		};
+
+		public readonly int Width;
+		public readonly int Height;
+		public readonly int RenderWidth;
+		public readonly int RenderHeight;
+		public readonly int TextXOffset;
+		public readonly int TextYOffset;
+		public readonly int CastXOffset;
+		public readonly int CastYOffset;
+
+		public CharacterStyleInfo (int width, int height, int renderWidth, int renderHeight, int textXOffset, int textYOffset, int castXOffset, int castYOffset)
 		{
-			Loader = loader;
-			StartingID = startingID;
 			Width = width;
 			Height = height;
+			RenderWidth = renderWidth;
+			RenderHeight = renderHeight;
+			TextXOffset = textXOffset;
+			TextYOffset = textYOffset;
+			CastXOffset = castXOffset;
+			CastYOffset = castYOffset;
+		}
+	}
+
+	class CharacterRenderer
+	{
+		TilesetLoader CharacterLoader;
+		HUDRenderer HUDRenderer;
+		int StartingID;
+		CharacterStyleInfo StyleInfo;
+
+		CharacterRenderer (TilesetLoader characterLoader, int startingID, CharacterStyleInfo styleInfo)
+		{
+			CharacterLoader = characterLoader;
+			StartingID = startingID;
+			StyleInfo = styleInfo;
+
+			HUDRenderer = new HUDRenderer (StyleInfo);
+		}
+
+		static CharacterRenderer Create (string path, int startingID, CharacterStyleInfo style)
+		{
+			TilesetLoader loader = new TilesetLoader (path, style.Width, style.Height);
+			return new CharacterRenderer (loader, startingID, style);
 		}
 
 		public static CharacterRenderer CreateNormalSized (string path, int startingID, bool doubleSize)
 		{
-			const int CharacterWidth = 26;
-			const int CharacterHeight = 36;
-
-			int width = doubleSize ? CharacterWidth * 2 : CharacterWidth;
-			int height = doubleSize ? CharacterHeight * 2 : CharacterHeight;
-
-			TilesetLoader loader = new TilesetLoader (path, width, height);
-			return new CharacterRenderer (loader, startingID, CharacterWidth * 2, CharacterHeight * 2);
+			var styleInfo = doubleSize ? CharacterStyleInfo.Styles [(int)CharacterStyle.Double] : CharacterStyleInfo.Styles [(int)CharacterStyle.Normal];
+			return Create (path, startingID, styleInfo);
 		}
 
 		public static CharacterRenderer CreateExtraLarge (string path, int startingID)
 		{
-			const int ExtreLargeMonsterWidth = 122;
-			const int ExtreLargeMonsterHeight = 114;
-
-			TilesetLoader loader = new TilesetLoader (path, ExtreLargeMonsterWidth, ExtreLargeMonsterHeight);
-			return new CharacterRenderer (loader, startingID, ExtreLargeMonsterWidth, ExtreLargeMonsterHeight);
+			return Create (path, startingID, CharacterStyleInfo.Styles [(int)CharacterStyle.ExtraLarge]);
 		}
 
 		readonly int [] FrameOffset = new int [] { 1, 0, 1, 2 };
 		int CalculateAnimationOffset (long frame)
 		{
-			const int FramesBetweenAnimation = 10;
-
-			return FrameOffset [(int)((frame / FramesBetweenAnimation) % 4)];		
+			const int FramesBetweenAnimation = 6;
+			return FrameOffset [(int)((frame / FramesBetweenAnimation) % 4)];
 		}
 
 		public void Render (SKCanvas canvas, int x, int y, long frame)
 		{
-			var tilesetRect = Loader.GetRect (StartingID + CalculateAnimationOffset (frame));
-			canvas.DrawBitmap (Loader.Tileset, tilesetRect, SKRect.Create (x, y, Width, Height));
+			DrawCharacter (canvas, x, y, frame);
+			HUDRenderer.DrawHUD (canvas, x, y);
+			HUDRenderer.DrawCastbar (canvas, x, y, frame);
+		}
+
+		void DrawCharacter (SKCanvas canvas, int x, int y, long frame)
+		{
+			var tilesetRect = CharacterLoader.GetRect (StartingID + CalculateAnimationOffset (frame));
+			canvas.DrawBitmap (CharacterLoader.Tileset, tilesetRect, SKRect.Create (x, y, StyleInfo.RenderWidth, StyleInfo.RenderHeight));
 		}
 	}
 }

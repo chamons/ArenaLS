@@ -11,9 +11,13 @@ namespace ArenaLS.Views.Views
 		List<CharacterRenderer> CharacterRenderers = new List<CharacterRenderer> ();
 
 		// TestData
+		const int CharacterStartingY = 180;
+		const int CharacterYDelta = 80;
 		Point [] Offsets = new Point [] {
-			new Point (525, 175), new Point (525, 250), new Point (525, 325),
-			new Point (525, 400), new Point (525, 475), new Point (300, 275),
+			new Point (525, CharacterStartingY), new Point (525, CharacterStartingY + (1 * CharacterYDelta)),
+			new Point (525, CharacterStartingY + (2 * CharacterYDelta)),
+			new Point (525, CharacterStartingY + (3 * CharacterYDelta)),
+			new Point (525, CharacterStartingY + (4 * CharacterYDelta)), new Point (300, 275),
 		};
 
 		readonly Point SkillBarOffset = new Point (2, 680);

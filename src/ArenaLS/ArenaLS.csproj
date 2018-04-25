@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Engine\GameEngine.cs" />
+    <Compile Include="Engine\Random.cs" />
+    <Compile Include="Model\Dice.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Skill.cs" />
     <Compile Include="Utilities\EnumerableExtensions.cs" />
@@ -54,6 +57,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ArenaLS.Platform\ArenaLS.Platform.csproj">
+      <Project>{1F2A037D-51CD-408F-8E84-4FCEB34226F6}</Project>
+      <Name>ArenaLS.Platform</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

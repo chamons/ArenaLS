@@ -2,6 +2,7 @@
 using ArenaLS.Platform;
 using ArenaLS.Views;
 using ArenaLS.Views.Scenes;
+using ArenaLS.Engine;
 
 namespace ArenaLS
 {
@@ -11,6 +12,8 @@ namespace ArenaLS
 		IScene CurrentScene;
 
 		ILogger Log;
+
+		GameEngine GameEngine;
 
 		public GameController (IGameWindow gameWindow)
 		{
@@ -27,8 +30,7 @@ namespace ArenaLS
 
 		public void Startup (IFileStorage storage)
 		{
-			Dependencies.Register<ILogger> (typeof (Logger));
-			Dependencies.RegisterInstance<IFileStorage> (storage);
+			GameEngine = new GameEngine (storage);
 
 			var combatScene = new CombatScene (this);
 			// TestData

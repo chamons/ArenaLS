@@ -23,7 +23,11 @@ namespace ArenaLS.Views.Views
 		readonly Point SkillBarOffset = new Point (2, 680);
 		readonly Size SkillBarSize = new Size (550, 40);
 
+		readonly Point LogOffset = new Point (40, 0);
+
 		SkillBarView SkillBar;
+
+		LogView LogView;
 
 		public CombatView (Point position, Size size) : base (position, size)
 		{
@@ -36,6 +40,9 @@ namespace ArenaLS.Views.Views
 			CharacterRenderers.Add (CharacterRenderer.CreateExtraLarge ("data/characters/$monster_bird1.png", 0));
 
 			SkillBar = new SkillBarView (SkillBarOffset, SkillBarSize);
+			LogView = new LogView (LogOffset, new Size (size.Width - (LogOffset.X * 2), 45));
+
+			LogView.Show ("Test Message", 90);
 		}
 
 		public void Load (string mapName)
@@ -47,20 +54,26 @@ namespace ArenaLS.Views.Views
 
 		public override SKSurface Draw (long frame)
 		{
-			// TestData - Hard coded
-			const int OffsetX = -205;
-			const int OffsetY = -325;
-
 			base.Draw (frame);
 
-			Background.Draw (Canvas, OffsetX, OffsetY, null);
+			DrawBackground ();
 
 			for (int i = 0; i < CharacterRenderers.Count; ++i)
 				CharacterRenderers [i].Render (Canvas, Offsets [i].X, Offsets [i].Y, frame);
 
 			Canvas.DrawSurface (SkillBar.Draw (frame), SkillBarOffset.X, SkillBarOffset.Y);
+			Canvas.DrawSurface (LogView.Draw (frame), LogOffset.X, LogOffset.Y);
 
 			return Surface;
+		}
+
+		private void DrawBackground ()
+		{
+			// TestData - Hard coded
+			const int OffsetX = -205;
+			const int OffsetY = -325;
+
+			Background.Draw (Canvas, OffsetX, OffsetY, null);
 		}
 
 		public override HitTestResults HitTest (SKPointI point)

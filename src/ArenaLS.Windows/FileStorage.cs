@@ -6,6 +6,8 @@ namespace ArenaLS.Utilities
 {
 	class FileStorage : IFileStorage
 	{
+		const string FolderName = "Arena Legendary Struggle";
+
 		public string SaveLocation
 		{
 			get
@@ -15,7 +17,7 @@ namespace ArenaLS.Utilities
 #else
 				string savedGamePath = System.Environment.ExpandEnvironmentVariables ("%USERPROFILE%\\Saved Games");
 #endif
-				return Path.Combine (savedGamePath, "Arena Gunpowder and Sorcery", "ArenaLS.sav");
+				return Path.Combine (savedGamePath, FolderName, "ArenaLS.sav");
 			}
 		}
 
@@ -28,7 +30,7 @@ namespace ArenaLS.Utilities
 #else
 				string logPath = System.Environment.ExpandEnvironmentVariables ("%USERPROFILE%\\Saved Games");
 #endif
-				return Path.Combine (logPath, "Arena Gunpowder and Sorcery", "log.txt");
+				return Path.Combine (logPath, FolderName, "log.txt");
 			}
 		}
 

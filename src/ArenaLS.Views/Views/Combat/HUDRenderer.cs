@@ -27,8 +27,9 @@ namespace ArenaLS.Views.Views.Combat
 
 			canvas.DrawRect (SKRect.Create (x + StyleInfo.TextXOffset - BackgroundOffsetX, y + StyleInfo.TextYOffset - BackgroundOffsetY, HUDWidth, HUDHeight), Styles.TextBackground);
 			canvas.DrawText (c.Name, new SKPoint (x + StyleInfo.TextXOffset, y + StyleInfo.TextYOffset), Styles.TextPaint);
-			canvas.DrawText ("HP 999/888", new SKPoint (x + StyleInfo.TextXOffset, LineHeight + y + StyleInfo.TextYOffset), Styles.TextPaint);
-			// TestData
+			canvas.DrawText ($"HP {c.Health.Current}/{c.Health.Maximum}", new SKPoint (x + StyleInfo.TextXOffset, LineHeight + y + StyleInfo.TextYOffset), Styles.TextPaint);
+
+			// TestData - Status Icons
 			int iconOffset = 0;
 			foreach (int i in new int [] { 33, 42, 148, 36 })
 			{

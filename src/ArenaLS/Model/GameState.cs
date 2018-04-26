@@ -39,13 +39,13 @@ namespace ArenaLS.Model
 		// TestData
 		void CreateTestData ()
 		{
-			PlayerCharacter = new Character ("Player", 0);
+			PlayerCharacter = new Character ("Player", 0, new Health (100, 100));
 			foreach (var skill in new Skill [] { new Skill ("Heal"), new Skill ("Shield"), new Skill ("Fire"), new Skill ("Lightning"), new Skill ("Poison") })
 				PlayerCharacter.AddSkill (skill);
 
 			for (int i = 0; i < 4; ++i)
-				Mercenaries.Add (new Character ($"Character {i}", i + 1));
-			Enemies.Add (new Character ("Enemy", 5));
+				Mercenaries.Add (new Character ($"Character {i}", i + 1, new Health (100, 100)));
+			Enemies.Add (new Character ("Enemy", 5, new Health (100, 100)));
 
 			CurrentMap = "BeachMap";
 		}

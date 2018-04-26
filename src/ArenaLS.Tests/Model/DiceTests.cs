@@ -9,7 +9,7 @@ namespace ArenaLS.Tests.Model
 	public class DiceTests
 	{
 		[Test]
-		public void DiceSimpleAddition_GivesExpectedValue ()
+		public void Addition_GivesExpectedValue ()
 		{
 			Dice one = new Dice (1, 1);
 			Assert.AreEqual (Dice.Zero, Dice.Zero.Add (Dice.Zero));
@@ -18,7 +18,7 @@ namespace ArenaLS.Tests.Model
 		}
 
 		[Test]
-		public void DiceInvalidAddition_Throws ()
+		public void InvalidAddition_Throws ()
 		{
 			Dice first = new Dice (2, 3);
 			Dice second = new Dice (3, 4);
@@ -29,7 +29,7 @@ namespace ArenaLS.Tests.Model
 		}
 
 		[Test]
-		public void DiceRoll_SmokeTest ()
+		public void SmokeTest ()
 		{
 			RandomGenerator random = new RandomGenerator (42);
 			Dice dice = new Dice (3, 4, 2);
@@ -38,7 +38,7 @@ namespace ArenaLS.Tests.Model
 		}
 
 		[Test]
-		public void DiceRollMax_GivesCorrectValue ()
+		public void RollMax_GivesCorrectValue ()
 		{
 			Dice dice = new Dice (3, 4, 2);
 			Assert.AreEqual (14, dice.RollMax ());

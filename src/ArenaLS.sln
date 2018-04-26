@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArenaLS.Views", "ArenaLS.Vi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArenaLS", "ArenaLS\ArenaLS.csproj", "{82F830E1-C6BE-4235-B800-A3D7C215B31A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArenaLS.Tests", "ArenaLS.Tests\ArenaLS.Tests.csproj", "{42C73B79-AEA6-43FE-AF99-D9E6A738FEB1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{84996B6A-60D9-451A-A893-8D0721B8F79B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,8 +37,15 @@ Global
 		{82F830E1-C6BE-4235-B800-A3D7C215B31A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82F830E1-C6BE-4235-B800-A3D7C215B31A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82F830E1-C6BE-4235-B800-A3D7C215B31A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42C73B79-AEA6-43FE-AF99-D9E6A738FEB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42C73B79-AEA6-43FE-AF99-D9E6A738FEB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42C73B79-AEA6-43FE-AF99-D9E6A738FEB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42C73B79-AEA6-43FE-AF99-D9E6A738FEB1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{42C73B79-AEA6-43FE-AF99-D9E6A738FEB1} = {84996B6A-60D9-451A-A893-8D0721B8F79B}
 	EndGlobalSection
 EndGlobal

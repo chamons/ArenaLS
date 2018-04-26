@@ -1,7 +1,9 @@
-﻿using ArenaLS.Utilities;
-using SkiaSharp;
-using System;
+﻿using System;
 using System.Collections.Generic;
+
+using ArenaLS.Model;
+using ArenaLS.Utilities;
+using SkiaSharp;
 
 namespace ArenaLS.Views.Views.Combat
 {
@@ -38,7 +40,6 @@ namespace ArenaLS.Views.Views.Combat
 			return new SKRect (left, top, right, bottom);
 		}
 
-		// TestData
 		int IDForSkill (Skill skill)
 		{
 			switch (skill.Name)
@@ -58,15 +59,13 @@ namespace ArenaLS.Views.Views.Combat
 			}
 		}
 
-		public override SKSurface Draw (long frame)
+		public override SKSurface Draw (GameState currentState, long frame)
 		{
-			base.Draw (frame);
+			base.Draw (currentState, frame);
 
-			// TestData
-			var skills = new List<Skill> () { new Skill ("Heal"), new Skill ("Shield"), new Skill ("Fire"), new Skill ("Lightning"), new Skill ("Poison") };
-			for (int i = 0; i < Math.Min (skills.Count, MaxNumberOfSkills); ++i)
+			for (int i = 0; i < Math.Min (currentState.PlayerCharacter.Skills.Count, MaxNumberOfSkills); ++i)
 			{
-				Skill skill = skills [i];
+				Skill skill = currentState.PlayerCharacter.Skills [i];
 				SKRect rect = RectForSkill (i);
 
 				Canvas.DrawRect (rect, CellBorder);
@@ -86,7 +85,7 @@ namespace ArenaLS.Views.Views.Combat
 
 		private void DrawCooldownOverlay (Skill skill, SKRect bitmapRect)
 		{
-			float percentageLeft = (float)skill.Cooldown / (float)skill.MaxCooldown;
+			float percentageLeft = (float)skill.CurrentCooldown / (float)skill.SkillCooldown;
 			float newHeight = bitmapRect.Height * percentageLeft;
 			float remainingHeight = bitmapRect.Height - newHeight;
 			SKPoint location = bitmapRect.Location;

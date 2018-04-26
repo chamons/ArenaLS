@@ -1,4 +1,5 @@
-﻿using SkiaSharp;
+﻿using ArenaLS.Model;
+using SkiaSharp;
 
 namespace ArenaLS.Views.Views.Combat
 {
@@ -74,10 +75,10 @@ namespace ArenaLS.Views.Views.Combat
 			return FrameOffset [(int)((frame / FramesBetweenAnimation) % 4)];
 		}
 
-		public void Render (SKCanvas canvas, int x, int y, long frame)
+		public void Render (SKCanvas canvas, Character c, int x, int y, long frame)
 		{
 			DrawCharacter (canvas, x, y, frame);
-			HUDRenderer.DrawHUD (canvas, x, y);
+			HUDRenderer.DrawHUD (canvas, c, x, y);
 			HUDRenderer.DrawCastbar (canvas, x, y, frame);
 		}
 

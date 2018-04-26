@@ -1,9 +1,10 @@
-﻿using SkiaSharp;
+﻿using ArenaLS.Model;
+using SkiaSharp;
 namespace ArenaLS.Views.Scenes
 {
 	internal interface IScene
 	{
-		void HandlePaint (SKSurface surface, long frame);
+		void HandlePaint (SKSurface surface, GameState currentState, long frame);
 
 		void OnPress (SKPointI point);
 		void OnDetailPress (SKPointI point);

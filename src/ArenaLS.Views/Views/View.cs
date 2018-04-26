@@ -1,4 +1,5 @@
-﻿using ArenaLS.Utilities;
+﻿using ArenaLS.Model;
+using ArenaLS.Utilities;
 using SkiaSharp;
 
 namespace ArenaLS.Views.Views
@@ -33,7 +34,7 @@ namespace ArenaLS.Views.Views
 		protected SKCanvas Canvas { get; private set; }
 		protected virtual bool ClearCanvas => false;
 
-		public virtual SKSurface Draw (long frame)
+		public virtual SKSurface Draw (GameState currentState, long frame)
 		{
 			Canvas = Surface.Canvas;
 			if (ClearCanvas)

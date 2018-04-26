@@ -40,7 +40,6 @@ namespace ArenaLS.Views.Views.Combat
 			return new SKRect (left, top, right, bottom);
 		}
 
-		// TestData
 		int IDForSkill (Skill skill)
 		{
 			switch (skill.Name)

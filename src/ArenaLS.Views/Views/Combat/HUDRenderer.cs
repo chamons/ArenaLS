@@ -51,7 +51,7 @@ namespace ArenaLS.Views.Views.Combat
 			const int CastbarTextOffsetX = -12;
 			const int CastbarTextOffsetY = 5;
 
-			// TestData
+			// TestData - CastBar
 			int percentCast = (int)((frame * 2) % 100);
 			var castBarOutlineRect = SKRect.Create (x + StyleInfo.CastXOffset, y + StyleInfo.CastYOffset, CastbarLength, CastbarHeight);
 			canvas.DrawRect (castBarOutlineRect, CastBarOutlinePaint);

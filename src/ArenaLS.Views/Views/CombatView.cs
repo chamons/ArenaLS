@@ -24,11 +24,10 @@ namespace ArenaLS.Views.Views
 
 		public CombatView (Point position, Size size) : base (position, size)
 		{
-			// TestData
-
 			SkillBar = new SkillBarView (SkillBarOffset, SkillBarSize);
 			LogView = new LogView (LogOffset, new Size (size.Width - (LogOffset.X * 2), 45));
 
+			// TestData - Log test
 			LogView.Show ("Test Message", 90);
 		}
 

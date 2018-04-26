@@ -1,9 +1,12 @@
 using System.Collections.Generic;
 
-public static class EnumerableExtensions
+namespace ArenaLS.Utilities
 {
-	public static IEnumerable<T> Yield<T> (this T item)
+	public static class EnumerableExtensions
 	{
-		yield return item;
+		public static IEnumerable<T> Yield<T> (this T item)
+		{
+			yield return item;
+		}
 	}
 }

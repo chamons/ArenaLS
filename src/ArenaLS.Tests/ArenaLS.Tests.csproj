@@ -48,6 +48,8 @@
   <ItemGroup>
     <Compile Include="CombatTests.cs" />
     <Compile Include="Model\DiceTests.cs" />
+    <Compile Include="Model\SkillTests.cs" />
+    <Compile Include="Model\TestFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

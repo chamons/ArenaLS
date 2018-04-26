@@ -1,14 +1,12 @@
 ﻿using ArenaLS.Platform;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ArenaLS.Model;
 
 namespace ArenaLS.Engine
 {
 	public class GameEngine
 	{
+		public GameState CurrentState => new GameState ();
+
 		public GameEngine (IFileStorage storage)
 		{
 			Dependencies.Register<ILogger> (typeof (Logger));

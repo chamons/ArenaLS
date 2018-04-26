@@ -1,7 +1,9 @@
-﻿using ArenaLS.Utilities;
-using SkiaSharp;
-using System;
+﻿using System;
 using System.Collections.Generic;
+
+using ArenaLS.Model;
+using ArenaLS.Utilities;
+using SkiaSharp;
 
 namespace ArenaLS.Views.Views.Combat
 {
@@ -86,7 +88,7 @@ namespace ArenaLS.Views.Views.Combat
 
 		private void DrawCooldownOverlay (Skill skill, SKRect bitmapRect)
 		{
-			float percentageLeft = (float)skill.Cooldown / (float)skill.MaxCooldown;
+			float percentageLeft = (float)skill.CurrentCooldown / (float)skill.SkillCooldown;
 			float newHeight = bitmapRect.Height * percentageLeft;
 			float remainingHeight = bitmapRect.Height - newHeight;
 			SKPoint location = bitmapRect.Location;

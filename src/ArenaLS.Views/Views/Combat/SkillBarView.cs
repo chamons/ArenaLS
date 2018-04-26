@@ -60,15 +60,13 @@ namespace ArenaLS.Views.Views.Combat
 			}
 		}
 
-		public override SKSurface Draw (long frame)
+		public override SKSurface Draw (GameState currentState, long frame)
 		{
-			base.Draw (frame);
+			base.Draw (currentState, frame);
 
-			// TestData
-			var skills = new List<Skill> () { new Skill ("Heal"), new Skill ("Shield"), new Skill ("Fire"), new Skill ("Lightning"), new Skill ("Poison") };
-			for (int i = 0; i < Math.Min (skills.Count, MaxNumberOfSkills); ++i)
+			for (int i = 0; i < Math.Min (currentState.PlayerCharacter.Skills.Count, MaxNumberOfSkills); ++i)
 			{
-				Skill skill = skills [i];
+				Skill skill = currentState.PlayerCharacter.Skills [i];
 				SKRect rect = RectForSkill (i);
 
 				Canvas.DrawRect (rect, CellBorder);

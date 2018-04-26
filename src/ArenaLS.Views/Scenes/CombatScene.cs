@@ -1,4 +1,5 @@
-﻿using ArenaLS.Utilities;
+﻿using ArenaLS.Model;
+using ArenaLS.Utilities;
 using ArenaLS.Views.Views;
 using SkiaSharp;
 
@@ -23,11 +24,11 @@ namespace ArenaLS.Views.Scenes
 			CombatView.Load (mapName);
 		}
 
-		public void HandlePaint (SKSurface surface, long frame)
+		public void HandlePaint (SKSurface surface, GameState currentState, long frame)
 		{
 			surface.Canvas.Clear (SKColors.Black);
 
-			surface.Canvas.DrawSurface (CombatView.Draw (frame), 0, 0);
+			surface.Canvas.DrawSurface (CombatView.Draw (currentState, frame), 0, 0);
 		}
 
 		public void Invalidate ()

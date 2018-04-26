@@ -1,4 +1,5 @@
-﻿using ArenaLS.Utilities;
+﻿using ArenaLS.Model;
+using ArenaLS.Utilities;
 using ArenaLS.Views.Utilities;
 using SkiaSharp;
 
@@ -34,11 +35,11 @@ namespace ArenaLS.Views.Views.Combat
 
 		bool IsEnabled (long frame) => frame < UntilFrame;
 
-		public override SKSurface Draw (long frame)
+		public override SKSurface Draw (GameState currentState, long frame)
 		{
 			if (IsEnabled (frame))
 			{
-				base.Draw (frame);
+				base.Draw (currentState, frame);
 
 				var logFrameRect = SKRect.Create (SKPoint.Empty, Size.AsSKSize ());
 				Canvas.DrawRoundRect (logFrameRect, 15, 20, Styles.LogBorder);

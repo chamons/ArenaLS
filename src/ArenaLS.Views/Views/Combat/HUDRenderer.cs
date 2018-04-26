@@ -1,4 +1,5 @@
 ﻿using System;
+using ArenaLS.Model;
 using SkiaSharp;
 
 namespace ArenaLS.Views.Views.Combat
@@ -14,7 +15,7 @@ namespace ArenaLS.Views.Views.Combat
 			StatusIconLoader = new TilesetLoader ("data/tf_icon_32.png", 32);
 		}
 
-		public void DrawHUD (SKCanvas canvas, int x, int y)
+		public void DrawHUD (SKCanvas canvas, Character c, int x, int y)
 		{
 			const int BackgroundOffsetX = 5;
 			const int BackgroundOffsetY = 15;
@@ -25,7 +26,7 @@ namespace ArenaLS.Views.Views.Combat
 			const int StatusIconWidthGap = 20;
 
 			canvas.DrawRect (SKRect.Create (x + StyleInfo.TextXOffset - BackgroundOffsetX, y + StyleInfo.TextYOffset - BackgroundOffsetY, HUDWidth, HUDHeight), Styles.TextBackground);
-			canvas.DrawText ("NameName", new SKPoint (x + StyleInfo.TextXOffset, y + StyleInfo.TextYOffset), Styles.TextPaint);
+			canvas.DrawText (c.Name, new SKPoint (x + StyleInfo.TextXOffset, y + StyleInfo.TextYOffset), Styles.TextPaint);
 			canvas.DrawText ("HP 999/888", new SKPoint (x + StyleInfo.TextXOffset, LineHeight + y + StyleInfo.TextYOffset), Styles.TextPaint);
 			// TestData
 			int iconOffset = 0;

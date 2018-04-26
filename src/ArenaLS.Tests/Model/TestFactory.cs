@@ -10,6 +10,6 @@ namespace ArenaLS.Tests.Model
 	internal static class TestFactory
 	{
 		public static Skill CreateTestSkill () => new Skill ("Test", 10, 10);
-		public static Character CreateTestCharacter () => new Character ();
+		public static Character CreateTestCharacter () => new Character ("Test", 0);
 	}
 }

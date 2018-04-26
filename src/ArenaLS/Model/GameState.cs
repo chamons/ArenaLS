@@ -5,8 +5,10 @@ namespace ArenaLS.Model
 	public class GameState
 	{
 		public Character PlayerCharacter { get; private set; }
-		public List<Character> Mercenaries { get; private set; }
-		public List<Character> Enemies { get; private set; }
+		public List<Character> Mercenaries { get; private set; } = new List<Character> ();
+		public List<Character> Enemies { get; private set; } = new List<Character> ();
+
+		public string CurrentMap { get; private set; }
 
 		public IEnumerable<Character> PlayerCharacters
 		{
@@ -18,7 +20,7 @@ namespace ArenaLS.Model
 			}
 		}
 
-		public IEnumerable<Character> Characters
+		public IEnumerable<Character> AllCharacters
 		{
 			get
 			{
@@ -37,10 +39,15 @@ namespace ArenaLS.Model
 		// TestData
 		void CreateTestData ()
 		{
-			PlayerCharacter = new Character ();
+			PlayerCharacter = new Character ("Player", 0);
+			foreach (var skill in new Skill [] { new Skill ("Heal"), new Skill ("Shield"), new Skill ("Fire"), new Skill ("Lightning"), new Skill ("Poison") })
+				PlayerCharacter.AddSkill (skill);
+
 			for (int i = 0; i < 4; ++i)
-				Mercenaries.Add (new Character ());
-			Enemies.Add (new Character ());
+				Mercenaries.Add (new Character ($"Character {i}", i + 1));
+			Enemies.Add (new Character ("Enemy", 5));
+
+			CurrentMap = "BeachMap";
 		}
 	}
 }

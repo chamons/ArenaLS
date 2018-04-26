@@ -1,24 +1,17 @@
-﻿using ArenaLS.Utilities;
+﻿using System;
+using ArenaLS.Model;
+using ArenaLS.Utilities;
 using ArenaLS.Views.Views.Combat;
 using SkiaSharp;
-using System.Collections.Generic;
 
 namespace ArenaLS.Views.Views
 {
 	class CombatView : View
 	{
-		SKSurface Background;
-		List<CharacterRenderer> CharacterRenderers = new List<CharacterRenderer> ();
+		CharacterRenderCache RenderCache = new CharacterRenderCache ();
 
-		// TestData
-		const int CharacterStartingY = 180;
-		const int CharacterYDelta = 80;
-		Point [] Offsets = new Point [] {
-			new Point (525, CharacterStartingY), new Point (525, CharacterStartingY + (1 * CharacterYDelta)),
-			new Point (525, CharacterStartingY + (2 * CharacterYDelta)),
-			new Point (525, CharacterStartingY + (3 * CharacterYDelta)),
-			new Point (525, CharacterStartingY + (4 * CharacterYDelta)), new Point (300, 275),
-		};
+		SKSurface Background;
+		string MapName;
 
 		readonly Point SkillBarOffset = new Point (2, 680);
 		readonly Size SkillBarSize = new Size (550, 40);
@@ -32,12 +25,6 @@ namespace ArenaLS.Views.Views
 		public CombatView (Point position, Size size) : base (position, size)
 		{
 			// TestData
-			CharacterRenderers.Add (CharacterRenderer.CreateNormalSized ("data/characters/chara6.png", 21, true));
-			CharacterRenderers.Add (CharacterRenderer.CreateNormalSized ("data/characters/chara7.png", 15, true));
-			CharacterRenderers.Add (CharacterRenderer.CreateNormalSized ("data/characters/chara2.png", 12, false));
-			CharacterRenderers.Add (CharacterRenderer.CreateNormalSized ("data/characters/chara2.png", 69, false));
-			CharacterRenderers.Add (CharacterRenderer.CreateNormalSized ("data/characters/chara2.png", 21, false));
-			CharacterRenderers.Add (CharacterRenderer.CreateExtraLarge ("data/characters/$monster_bird1.png", 0));
 
 			SkillBar = new SkillBarView (SkillBarOffset, SkillBarSize);
 			LogView = new LogView (LogOffset, new Size (size.Width - (LogOffset.X * 2), 45));
@@ -47,33 +34,47 @@ namespace ArenaLS.Views.Views
 
 		public void Load (string mapName)
 		{
-			var mapLoader = new MapLoader ($"data/maps/{mapName}.tmx");
+			MapName = mapName;
+
+			var mapLoader = new MapLoader ($"data/maps/{MapName}.tmx");
 
 			Background = BackgroundRenderer.Render (mapLoader, 2f);
 		}
 
-		public override SKSurface Draw (long frame)
+		public override SKSurface Draw (GameState currentState, long frame)
 		{
-			base.Draw (frame);
+			base.Draw (currentState, frame);
 
 			DrawBackground ();
 
-			for (int i = 0; i < CharacterRenderers.Count; ++i)
-				CharacterRenderers [i].Render (Canvas, Offsets [i].X, Offsets [i].Y, frame);
+			foreach (Character c in currentState.AllCharacters)
+			{
+				Point renderPoint = CharacterRenderLocation.GetRenderPoint (c);
+				RenderCache [c].Render (Canvas, c, renderPoint.X, renderPoint.Y, frame);
+			}
 
-			Canvas.DrawSurface (SkillBar.Draw (frame), SkillBarOffset.X, SkillBarOffset.Y);
-			Canvas.DrawSurface (LogView.Draw (frame), LogOffset.X, LogOffset.Y);
+			Canvas.DrawSurface (SkillBar.Draw (currentState, frame), SkillBarOffset.X, SkillBarOffset.Y);
+			Canvas.DrawSurface (LogView.Draw (currentState, frame), LogOffset.X, LogOffset.Y);
 
 			return Surface;
 		}
 
-		private void DrawBackground ()
+		Point GetBackgroundOffset ()
 		{
-			// TestData - Hard coded
-			const int OffsetX = -205;
-			const int OffsetY = -325;
+			switch (MapName)
+			{
+				case "BeachMap":
+					return new Point (-205, -325);
+				default:
+					throw new NotImplementedException ();
+			}
+		}
 
-			Background.Draw (Canvas, OffsetX, OffsetY, null);
+		void DrawBackground ()
+		{
+			var backgroundOffset = GetBackgroundOffset ();
+
+			Background.Draw (Canvas, backgroundOffset.X, backgroundOffset.Y, null);
 		}
 
 		public override HitTestResults HitTest (SKPointI point)

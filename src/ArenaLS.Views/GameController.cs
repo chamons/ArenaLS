@@ -3,6 +3,7 @@ using ArenaLS.Platform;
 using ArenaLS.Views;
 using ArenaLS.Views.Scenes;
 using ArenaLS.Engine;
+using ArenaLS.Model;
 
 namespace ArenaLS
 {
@@ -28,16 +29,17 @@ namespace ArenaLS
 			GameWindow.OnDetailRelease += OnDetailRelease;
 		}
 
+		GameState CurrentState => GameEngine.CurrentState;
+
 		public void Startup (IFileStorage storage)
 		{
 			GameEngine = new GameEngine (storage);
 
-			var combatScene = new CombatScene (this);
-			// TestData
-			combatScene.Load ("BeachMap");
-			CurrentScene = combatScene;
+			Log = Dependencies.Get<ILogger> ();
 
-			Log = Dependencies.Get <ILogger>();
+			var combatScene = new CombatScene (this);
+			combatScene.Load (CurrentState.CurrentMap);
+			CurrentScene = combatScene;
 
 			GameWindow.StartAnimationTimer ();
 		}
@@ -78,7 +80,7 @@ namespace ArenaLS
 
 		void OnPaint (object sender, PaintEventArgs e)
 		{
-			CurrentScene.HandlePaint (e.Surface, GameWindow.Frame);
+			CurrentScene.HandlePaint (e.Surface, CurrentState, GameWindow.Frame);
 		}
 	}
 }

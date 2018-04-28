@@ -53,7 +53,6 @@ namespace ArenaLS.UI.Views
 				RenderCache [c].Render (Canvas, c, renderPoint.X, renderPoint.Y, frame);
 			}
 
-			Canvas.DrawSurface (TargetView.Draw (currentState, frame), 0, 0);
 			Canvas.DrawSurface (SkillBar.Draw (currentState, frame), SkillBarOffset.X, SkillBarOffset.Y);
 			Canvas.DrawSurface (LogView.Draw (currentState, frame), LogOffset.X, LogOffset.Y);
 

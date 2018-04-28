@@ -1,6 +1,6 @@
 ﻿using ArenaLS.Model;
 using SkiaSharp;
-namespace ArenaLS.Views.Scenes
+namespace ArenaLS.UI.Scenes
 {
 	internal interface IScene
 	{

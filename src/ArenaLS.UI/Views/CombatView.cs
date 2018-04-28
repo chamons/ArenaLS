@@ -1,10 +1,12 @@
 ﻿using System;
 using ArenaLS.Model;
 using ArenaLS.Utilities;
-using ArenaLS.Views.Views.Combat;
 using SkiaSharp;
+using ArenaLS.UI.Views.Combat.Utilities;
+using ArenaLS.UI.Views.Combat.Views;
+using ArenaLS.UI.Views.Combat.Renderers;
 
-namespace ArenaLS.Views.Views
+namespace ArenaLS.UI.Views
 {
 	class CombatView : View
 	{
@@ -19,7 +21,6 @@ namespace ArenaLS.Views.Views
 		readonly Point LogOffset = new Point (40, 0);
 
 		SkillBarView SkillBar;
-
 		LogView LogView;
 
 		public CombatView (Point position, Size size) : base (position, size)
@@ -52,6 +53,7 @@ namespace ArenaLS.Views.Views
 				RenderCache [c].Render (Canvas, c, renderPoint.X, renderPoint.Y, frame);
 			}
 
+			Canvas.DrawSurface (TargetView.Draw (currentState, frame), 0, 0);
 			Canvas.DrawSurface (SkillBar.Draw (currentState, frame), SkillBarOffset.X, SkillBarOffset.Y);
 			Canvas.DrawSurface (LogView.Draw (currentState, frame), LogOffset.X, LogOffset.Y);
 

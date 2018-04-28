@@ -1,7 +1,7 @@
 ﻿using ArenaLS.Model;
 using ArenaLS.Utilities;
 
-namespace ArenaLS.Views.Views.Combat
+namespace ArenaLS.UI.Views.Combat.Utilities
 {
 	public static class CharacterRenderLocation
 	{

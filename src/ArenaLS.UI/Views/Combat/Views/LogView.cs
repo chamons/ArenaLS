@@ -1,9 +1,9 @@
 ﻿using ArenaLS.Model;
 using ArenaLS.Utilities;
-using ArenaLS.Views.Utilities;
+using ArenaLS.UI.Utilities;
 using SkiaSharp;
 
-namespace ArenaLS.Views.Views.Combat
+namespace ArenaLS.UI.Views.Combat.Views
 {
 	class LogView : View
 	{

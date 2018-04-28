@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using ArenaLS.Model;
+using ArenaLS.UI.Views.Combat.Renderers;
 
-namespace ArenaLS.Views.Views.Combat
+namespace ArenaLS.UI.Views.Combat.Utilities
 {
 	class CharacterRenderCache
 	{

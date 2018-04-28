@@ -1,7 +1,7 @@
 ﻿using System;
 using ArenaLS.Platform;
-using ArenaLS.Views;
-using ArenaLS.Views.Scenes;
+using ArenaLS.UI;
+using ArenaLS.UI.Scenes;
 using ArenaLS.Engine;
 using ArenaLS.Model;
 

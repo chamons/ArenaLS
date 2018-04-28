@@ -2,7 +2,7 @@
 using ArenaLS.Utilities;
 using SkiaSharp;
 
-namespace ArenaLS.Views.Views
+namespace ArenaLS.UI.Views
 {
 	class HitTestResults
 	{

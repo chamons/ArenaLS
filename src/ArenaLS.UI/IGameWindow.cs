@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SkiaSharp;
 
-namespace ArenaLS.Views
+namespace ArenaLS.UI
 {
 	public class PaintEventArgs : EventArgs
 	{

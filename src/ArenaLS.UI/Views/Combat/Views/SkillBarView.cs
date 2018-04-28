@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 
 using ArenaLS.Model;
 using ArenaLS.Utilities;
 using SkiaSharp;
 
-namespace ArenaLS.Views.Views.Combat
+namespace ArenaLS.UI.Views.Combat.Views
 {
 	class SkillBarView : View
 	{

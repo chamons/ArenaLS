@@ -1,7 +1,7 @@
 ﻿using ArenaLS.Model;
 using SkiaSharp;
 
-namespace ArenaLS.Views.Views.Combat
+namespace ArenaLS.UI.Views.Combat.Renderers
 {
 	enum CharacterStyle { Normal, Double, ExtraLarge }
 
@@ -78,8 +78,7 @@ namespace ArenaLS.Views.Views.Combat
 		public void Render (SKCanvas canvas, Character c, int x, int y, long frame)
 		{
 			DrawCharacter (canvas, x, y, frame);
-			HUDRenderer.DrawHUD (canvas, c, x, y);
-			HUDRenderer.DrawCastbar (canvas, x, y, frame);
+			HUDRenderer.Render (canvas, c, x, y, frame);
 		}
 
 		void DrawCharacter (SKCanvas canvas, int x, int y, long frame)

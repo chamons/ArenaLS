@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArenaLS.Windows", "ArenaLS.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArenaLS.Platform", "ArenaLS.Platform\ArenaLS.Platform.csproj", "{1F2A037D-51CD-408F-8E84-4FCEB34226F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArenaLS.Views", "ArenaLS.Views\ArenaLS.Views.csproj", "{F236A2BA-18DF-468E-9628-BECCB2F0B4B3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArenaLS.UI", "ArenaLS.Views\ArenaLS.UI.csproj", "{F236A2BA-18DF-468E-9628-BECCB2F0B4B3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArenaLS", "ArenaLS\ArenaLS.csproj", "{82F830E1-C6BE-4235-B800-A3D7C215B31A}"
 EndProject

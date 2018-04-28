@@ -1,9 +1,9 @@
 ﻿using ArenaLS.Model;
 using ArenaLS.Utilities;
-using ArenaLS.Views.Views;
+using ArenaLS.UI.Views;
 using SkiaSharp;
 
-namespace ArenaLS.Views.Scenes
+namespace ArenaLS.UI.Scenes
 {
 	class CombatScene : IScene
 	{

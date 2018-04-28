@@ -1,7 +1,7 @@
 ﻿using SkiaSharp;
 using System;
 
-namespace ArenaLS.Views.Views
+namespace ArenaLS.UI.Views
 {
 	class TilesetLoader
 	{

@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="GameController.cs" />
     <Compile Include="IGameWindow.cs" />
+    <Compile Include="Utilities\Direction.cs" />
     <Compile Include="Utilities\ViewExtensions.cs" />
     <Compile Include="Views\Combat\Utilities\CharacterRenderCache.cs" />
     <Compile Include="Views\Combat\Renderers\CharacterRenderer.cs" />

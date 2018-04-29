@@ -14,6 +14,7 @@ namespace ArenaLS.UI.Views.Combat.Utilities
 			new Point (525, CharacterStartingY + (4 * CharacterYDelta))
 		};
 
+		// MultipleEnemies
 		static Point [] EnemyOffsets = new Point [] {
 			new Point (300, 275),
 		};

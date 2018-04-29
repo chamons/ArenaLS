@@ -37,23 +37,21 @@ namespace ArenaLS.UI.Views.Combat.Views
 
 		public override SKSurface Draw (GameState currentState, long frame)
 		{
+			Clear ();
+
 			if (IsEnabled (frame))
 			{
-				base.Draw (currentState, frame);
-
 				var logFrameRect = SKRect.Create (SKPoint.Empty, Size.AsSKSize ());
 				Canvas.DrawRoundRect (logFrameRect, 15, 20, Styles.LogBorder);
 				logFrameRect.Inflate (-2, -2);
 				Canvas.DrawRoundRect (logFrameRect, 15, 20, Styles.LogFill);
 				Canvas.DrawText (Message, new SKPoint (Size.Width / 2, 6 + Size.Height / 2), Styles.LargeTextPaintCentered);
-
-				return Surface;
 			}
 			else
 			{
 				Surface.Canvas.Clear ();
-				return Surface;
 			}
+			return Surface;
 		}
 
 		public override HitTestResults HitTest (SKPointI point) => null;

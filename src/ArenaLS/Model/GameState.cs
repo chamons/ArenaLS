@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace ArenaLS.Model
 {
@@ -34,6 +35,20 @@ namespace ArenaLS.Model
 		internal GameState ()
 		{
 			CreateTestData ();
+		}
+
+		public Character GetCharacter (int position)
+		{
+			if (position < 5)
+			{
+				return PlayerCharacters.ElementAt (position);
+			}
+			else
+			{
+				if (Enemies.Count > position - 5)
+					return Enemies.ElementAt (position - 5);
+				return null;
+			}			
 		}
 
 		// TestData

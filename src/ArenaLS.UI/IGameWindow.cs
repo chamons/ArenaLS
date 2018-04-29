@@ -29,6 +29,7 @@ namespace ArenaLS.UI
 		void StartAnimationTimer ();
 
 		long Frame { get; }
+		float Scale { get; }
 
 		event EventHandler<PaintEventArgs> OnPaint;
 

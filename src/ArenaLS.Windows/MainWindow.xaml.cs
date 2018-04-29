@@ -27,6 +27,7 @@ namespace ArenaLS.Windows
 		System.Windows.Media.Matrix Transform;
 		System.Windows.Threading.DispatcherTimer Timer;
 		public long Frame { get; private set; } = 0;
+		public float Scale { get; private set; }
 
 		public MainWindow ()
 		{
@@ -67,6 +68,16 @@ namespace ArenaLS.Windows
 			Controller = new GameController (this);
 			Controller.Startup (new FileStorage ());
 			SkiaView.InvalidateVisual ();
+
+			Scale = GetUIScale () > 1 ? 1.33f : 1f;
+		}
+
+		float GetUIScale ()
+		{
+			PresentationSource source = PresentationSource.FromVisual (SkiaView);
+
+			double dpiX = 96.0 * source.CompositionTarget.TransformToDevice.M11;
+			return (float)(dpiX / 96.0);
 		}
 
 		void OnPlatformPaint (object sender, SkiaSharp.Views.Desktop.SKPaintSurfaceEventArgs e)

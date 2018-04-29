@@ -2,7 +2,7 @@
 using ArenaLS.Model;
 using SkiaSharp;
 
-namespace ArenaLS.Views.Views.Combat
+namespace ArenaLS.UI.Views.Combat.Renderers
 {
 	class HUDRenderer
 	{
@@ -15,7 +15,13 @@ namespace ArenaLS.Views.Views.Combat
 			StatusIconLoader = new TilesetLoader ("data/tf_icon_32.png", 32);
 		}
 
-		public void DrawHUD (SKCanvas canvas, Character c, int x, int y)
+		public void Render (SKCanvas canvas, Character c, int x, int y, long frame)
+		{
+			DrawHUD (canvas, c, x, y);
+			DrawCastbar (canvas, x, y, frame);
+		}
+
+		void DrawHUD (SKCanvas canvas, Character c, int x, int y)
 		{
 			const int BackgroundOffsetX = 5;
 			const int BackgroundOffsetY = 15;
@@ -42,7 +48,7 @@ namespace ArenaLS.Views.Views.Combat
 		readonly SKPaint CastBarOutlinePaint = new SKPaint () { StrokeWidth = 2, Color = new SKColor (238, 238, 238), IsStroke = true };
 		readonly SKPaint CastBarInsidePaint = new SKPaint () { StrokeWidth = 2, Color = new SKColor (44, 82, 178) };
 
-		public void DrawCastbar (SKCanvas canvas, int x, int y, long frame)
+		void DrawCastbar (SKCanvas canvas, int x, int y, long frame)
 		{
 			const int TinyTextBackgroundOffsetX = 1;
 			const int TinyTextBackgroundOffsetY = 8;

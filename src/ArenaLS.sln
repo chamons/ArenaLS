@@ -7,13 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArenaLS.Windows", "ArenaLS.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArenaLS.Platform", "ArenaLS.Platform\ArenaLS.Platform.csproj", "{1F2A037D-51CD-408F-8E84-4FCEB34226F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArenaLS.Views", "ArenaLS.Views\ArenaLS.Views.csproj", "{F236A2BA-18DF-468E-9628-BECCB2F0B4B3}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArenaLS", "ArenaLS\ArenaLS.csproj", "{82F830E1-C6BE-4235-B800-A3D7C215B31A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArenaLS.Tests", "ArenaLS.Tests\ArenaLS.Tests.csproj", "{42C73B79-AEA6-43FE-AF99-D9E6A738FEB1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{84996B6A-60D9-451A-A893-8D0721B8F79B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArenaLS.UI", "ArenaLS.UI\ArenaLS.UI.csproj", "{F236A2BA-18DF-468E-9628-BECCB2F0B4B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,6 @@ Global
 		{1F2A037D-51CD-408F-8E84-4FCEB34226F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F2A037D-51CD-408F-8E84-4FCEB34226F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F2A037D-51CD-408F-8E84-4FCEB34226F6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F236A2BA-18DF-468E-9628-BECCB2F0B4B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F236A2BA-18DF-468E-9628-BECCB2F0B4B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F236A2BA-18DF-468E-9628-BECCB2F0B4B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F236A2BA-18DF-468E-9628-BECCB2F0B4B3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{82F830E1-C6BE-4235-B800-A3D7C215B31A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{82F830E1-C6BE-4235-B800-A3D7C215B31A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82F830E1-C6BE-4235-B800-A3D7C215B31A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -41,6 +37,10 @@ Global
 		{42C73B79-AEA6-43FE-AF99-D9E6A738FEB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42C73B79-AEA6-43FE-AF99-D9E6A738FEB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42C73B79-AEA6-43FE-AF99-D9E6A738FEB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F236A2BA-18DF-468E-9628-BECCB2F0B4B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F236A2BA-18DF-468E-9628-BECCB2F0B4B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F236A2BA-18DF-468E-9628-BECCB2F0B4B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F236A2BA-18DF-468E-9628-BECCB2F0B4B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

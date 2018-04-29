@@ -1,5 +1,5 @@
 ﻿using ArenaLS.Utilities;
-using ArenaLS.Views;
+using ArenaLS.UI;
 using SkiaSharp;
 using System;
 using System.Windows;

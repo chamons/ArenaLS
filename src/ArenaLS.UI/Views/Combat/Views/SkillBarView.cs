@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 
 using ArenaLS.Model;
 using ArenaLS.Utilities;
 using SkiaSharp;
 
-namespace ArenaLS.Views.Views.Combat
+namespace ArenaLS.UI.Views.Combat.Views
 {
 	class SkillBarView : View
 	{
@@ -25,7 +24,6 @@ namespace ArenaLS.Views.Views.Combat
 
 		readonly SKPaint CooldownPaint = new SKPaint () { Color = SKColors.Black.WithAlpha (220) };
 		readonly SKPaint BlackPaint = new SKPaint () { Color = SKColors.Black.WithAlpha (220) };
-		readonly SKPaint AntialiasPaint = new SKPaint () { IsAntialias = false };
 		readonly SKPaint CellText = new SKPaint () { Color = SKColors.White, TextSize = 10, TextAlign = SKTextAlign.Center };
 		readonly SKPaint CellTextDark = new SKPaint () { Color = SKColors.White.WithAlpha (50), TextSize = 10, TextAlign = SKTextAlign.Center };
 		readonly SKPaint CellBorder = new SKPaint () { Color = SKColors.White, StrokeWidth = 2, IsStroke = true };
@@ -61,7 +59,7 @@ namespace ArenaLS.Views.Views.Combat
 
 		public override SKSurface Draw (GameState currentState, long frame)
 		{
-			base.Draw (currentState, frame);
+			Clear ();
 
 			for (int i = 0; i < Math.Min (currentState.PlayerCharacter.Skills.Count, MaxNumberOfSkills); ++i)
 			{
@@ -71,7 +69,7 @@ namespace ArenaLS.Views.Views.Combat
 				Canvas.DrawRect (rect, CellBorder);
 
 				SKRect bitmapRect = new SKRect (rect.Left + Padding, rect.Top + Padding, rect.Right - Padding, rect.Bottom - Padding);
-				Canvas.DrawBitmap (Loader.Tileset, Loader.GetRect (IDForSkill (skill)), bitmapRect, AntialiasPaint);
+				Canvas.DrawBitmap (Loader.Tileset, Loader.GetRect (IDForSkill (skill)), bitmapRect, Styles.AntialiasPaint);
 
 				if (skill.UnderCooldown)
 					DrawCooldownOverlay (skill, bitmapRect);

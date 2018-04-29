@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using SkiaSharp;
 using ArenaLS.Utilities;
 
-namespace ArenaLS.Views.Utilities
+namespace ArenaLS.UI.Utilities
 {
 	public static class SizeExtensions
 	{

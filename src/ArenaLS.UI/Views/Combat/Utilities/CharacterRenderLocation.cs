@@ -1,7 +1,7 @@
 ﻿using ArenaLS.Model;
 using ArenaLS.Utilities;
 
-namespace ArenaLS.Views.Views.Combat
+namespace ArenaLS.UI.Views.Combat.Utilities
 {
 	public static class CharacterRenderLocation
 	{
@@ -14,6 +14,7 @@ namespace ArenaLS.Views.Views.Combat
 			new Point (525, CharacterStartingY + (4 * CharacterYDelta))
 		};
 
+		// MultipleEnemies
 		static Point [] EnemyOffsets = new Point [] {
 			new Point (300, 275),
 		};

@@ -114,9 +114,9 @@
       <Project>{1f2a037d-51cd-408f-8e84-4fceb34226f6}</Project>
       <Name>ArenaLS.Platform</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ArenaLS.Views\ArenaLS.Views.csproj">
+    <ProjectReference Include="..\ArenaLS.UI\ArenaLS.UI.csproj">
       <Project>{f236a2ba-18df-468e-9628-beccb2f0b4b3}</Project>
-      <Name>ArenaLS.Views</Name>
+      <Name>ArenaLS.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

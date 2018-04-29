@@ -2,7 +2,7 @@
 using ArenaLS.Utilities;
 using SkiaSharp;
 
-namespace ArenaLS.Views.Views
+namespace ArenaLS.UI.Views
 {
 	class HitTestResults
 	{
@@ -31,19 +31,11 @@ namespace ArenaLS.Views.Views
 		}
 
 		protected SKSurface Surface { get; private set; }
-		protected SKCanvas Canvas { get; private set; }
-		protected virtual bool ClearCanvas => false;
+		protected SKCanvas Canvas => Surface.Canvas;
 
-		public virtual SKSurface Draw (GameState currentState, long frame)
-		{
-			Canvas = Surface.Canvas;
-			if (ClearCanvas)
-				Canvas.DrawRect (VisualRect, new SKPaint () { Color = SKColors.Black });
+		protected void Clear () => Canvas.Clear ();
 
-			return Surface;
-		}
-
-		public abstract HitTestResults HitTest (SKPointI point);
-		
+		public abstract SKSurface Draw (GameState currentState, long frame);
+		public abstract HitTestResults HitTest (SKPointI point);		
 	}
 }

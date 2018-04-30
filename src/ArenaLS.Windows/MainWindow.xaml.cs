@@ -65,6 +65,7 @@ namespace ArenaLS.Windows
 		void OnLoaded (object sender, RoutedEventArgs e)
 		{
 			Transform = PresentationSource.FromVisual (this).CompositionTarget.TransformToDevice;
+			 
 			Controller = new GameController (this);
 			Controller.Startup (new FileStorage ());
 			SkiaView.InvalidateVisual ();

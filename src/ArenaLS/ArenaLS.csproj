@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Engine\GameEngine.cs" />
     <Compile Include="Engine\Random.cs" />
+    <Compile Include="Model\CastSkill.cs" />
     <Compile Include="Model\Character.cs" />
     <Compile Include="Model\Dice.cs" />
     <Compile Include="Model\GameState.cs" />

@@ -7,7 +7,11 @@ namespace ArenaLS.Model
 		public int Slot { get; private set; }
 		public string Name { get; private set; }
 		public List<Skill> Skills { get; private set; } = new List<Skill> ();
-		public Health Health { get; private set; }
+
+		public Health Health { get; internal set; }
+		public CastSkill CastSkill { get; internal set; }
+
+		public bool IsCasting => CastSkill != null;
 
 		internal Character (string name, int slot, Health health)
 		{
@@ -15,12 +19,7 @@ namespace ArenaLS.Model
 			Name = name;
 			Health = health;
 		}
-
-		internal void SetHealth (Health h)
-		{
-			Health = h;
-		}
-
+		
 		internal void AddSkill (Skill s)
 		{
 			Skills.Add (s);

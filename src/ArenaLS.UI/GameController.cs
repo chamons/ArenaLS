@@ -80,6 +80,8 @@ namespace ArenaLS
 
 		void OnPaint (object sender, PaintEventArgs e)
 		{
+			CurrentState.ProcessTick (GameWindow.Frame);
+
 			e.Surface.Canvas.Scale (GameWindow.Scale);
 			CurrentScene.HandlePaint (e.Surface, CurrentState, GameWindow.Frame);
 		}

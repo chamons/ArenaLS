@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ArenaLS.Model;
+﻿using ArenaLS.Model;
 using NUnit.Framework;
 
 namespace ArenaLS.Tests
@@ -16,8 +11,10 @@ namespace ArenaLS.Tests
 		[SetUp]
 		public void Setup ()
 		{
+			TestDependencies.SetupTestDependencies ();
+
 			// TestData
-			GameState = new GameState ();
+			GameState = new GameState ();			
 		}
 
 		[TestCase]

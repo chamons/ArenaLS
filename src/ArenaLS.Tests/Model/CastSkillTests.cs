@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ArenaLS.Model;
+﻿using ArenaLS.Model;
+using ArenaLS.Tests.Utilities;
 using NUnit.Framework;
+using Optional;
 
 namespace ArenaLS.Tests.Model
 {
@@ -18,7 +15,7 @@ namespace ArenaLS.Tests.Model
 		public void Setup ()
 		{
 			var skill = TestFactory.CreateTestSkill ();
-			Cast = new CastSkill (skill, StartingFrame);
+			Cast = new CastSkill (skill, Option.None<Character> (), StartingFrame);
 		}
 
 		[Test]
@@ -34,5 +31,13 @@ namespace ArenaLS.Tests.Model
 			Assert.AreEqual (50, Cast.PercentageCast (StartingFrame + (Cast.CastTime / 2)));
 			Assert.AreEqual (100, Cast.PercentageCast (StartingFrame + Cast.CastTime));
 		}
+		[Test]
+		public void IsReady ()
+		{
+			Assert.False (Cast.IsReady (StartingFrame));
+			Assert.False (Cast.IsReady (StartingFrame + (Cast.CastTime / 2)));
+			Assert.True (Cast.IsReady (StartingFrame + Cast.CastTime));
+		}
+
 	}
 }

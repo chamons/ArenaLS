@@ -1,7 +1,7 @@
 ﻿using System;
 using ArenaLS.Platform;
 
-namespace ArenaLS.Tests
+namespace ArenaLS.Tests.Utilities
 {
 	class TestLogger : ILogger
 	{

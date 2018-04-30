@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using ArenaLS.Platform;
 
@@ -40,8 +41,17 @@ namespace ArenaLS.Model
 		internal GameState ()
 		{
 			Log = Dependencies.Get<ILogger> ();
+		}
 
-			CreateTestData ();
+		public static GameState Create (Character player, List<Character> mercenaries, List<Character> enemies, string map)
+		{
+			return new GameState ()
+			{
+				PlayerCharacter = player,
+				Mercenaries = mercenaries,
+				Enemies = enemies,
+				CurrentMap = map
+			};
 		}
 
 		public Character GetCharacter (int position)
@@ -56,20 +66,6 @@ namespace ArenaLS.Model
 					return Enemies.ElementAt (position - 5);
 				return null;
 			}			
-		}
-
-		// TestData
-		void CreateTestData ()
-		{
-			PlayerCharacter = new Character ("Player", 0, new Health (100, 100));
-			foreach (var skill in new Skill [] { new Skill ("Heal"), new Skill ("Shield"), new Skill ("Fire"), new Skill ("Lightning"), new Skill ("Poison") })
-				PlayerCharacter.AddSkill (skill);
-
-			for (int i = 0; i < 4; ++i)
-				Mercenaries.Add (new Character ($"Character {i}", i + 1, new Health (100, 100)));
-			Enemies.Add (new Character ("Enemy", 5, new Health (100, 100)));
-
-			CurrentMap = "BeachMap";
 		}
 
 		bool AlreadyProcessedFrame (long frame) => frame == LastProcessedFrame;

@@ -1,4 +1,5 @@
 ﻿using System;
+using Optional;
 
 namespace ArenaLS.Model
 {
@@ -7,27 +8,25 @@ namespace ArenaLS.Model
 		public readonly string Name;
 		public readonly int CastTime;
 		public readonly int SkillCooldown;
+		Action<Character, Option<Character>> Action;
 
 		public int CurrentCooldown { get; private set; } = 0;
 		public bool UnderCooldown => CurrentCooldown > 0;
 
-		// TestData
-		public Skill (string name) : this (name, 200, 200)
-		{
-		}
-
-		internal Skill (string name, int castTime, int skillCooldown)
+		internal Skill (string name, int castTime, int skillCooldown, Action<Character, Option<Character>> action)
 		{
 			Name = name;
 			CastTime = castTime;
 			SkillCooldown = skillCooldown;
+			Action = action;
 		}
 
-		internal void Use ()
+		internal void Use (Character caster, Option<Character> target)
 		{
 			if (CurrentCooldown != 0)
 				throw new InvalidOperationException ($"Attmpted to use Skill {Name} but CurrentCooldown was {CurrentCooldown}.");
 			CurrentCooldown = SkillCooldown;
+			Action (caster, target);
 		}
 
 		internal void Refresh (int v)

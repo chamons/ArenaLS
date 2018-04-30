@@ -1,4 +1,5 @@
 ﻿using ArenaLS.Model;
+using ArenaLS.Tests.Utilities;
 using NUnit.Framework;
 
 namespace ArenaLS.Tests
@@ -13,8 +14,7 @@ namespace ArenaLS.Tests
 		{
 			TestDependencies.SetupTestDependencies ();
 
-			// TestData
-			GameState = new GameState ();			
+			GameState = TestFactory.CreateTestState ();
 		}
 
 		[TestCase]
@@ -33,7 +33,6 @@ namespace ArenaLS.Tests
 		public void AllCharacters_ReturnsExpectedEnemy ()
 		{
 			Assert.AreEqual ("Enemy", GameState.GetCharacter (5).Name);
-
 		}
 
 		[TestCase]

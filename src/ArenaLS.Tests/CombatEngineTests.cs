@@ -66,5 +66,6 @@ namespace ArenaLS.Tests
 			CombatEngine.ProcessThrough (State, 20);
 			Assert.True (fired);
 		}
+
 	}
 }

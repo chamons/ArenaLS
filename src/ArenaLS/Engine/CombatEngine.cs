@@ -25,8 +25,10 @@ namespace ArenaLS.Engine
 		{
 			foreach (Character invoker in state.AllCharacters.Where (x => x.IsCasting && x.CastSkill.IsReady (frame)))
 			{
-				// HACK - All sorts of wrong with dots.
-				invoker.CastSkill.Skill.Use (invoker, invoker.CastSkill.Target);
+				CastSkill castSkill = invoker.CastSkill;
+				Skill skill = castSkill.Skill;
+				skill.Action (invoker, castSkill.Target);
+			//	skill.Use ();
 				invoker.CastSkill = null;
 			}
 		}

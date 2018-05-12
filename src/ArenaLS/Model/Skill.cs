@@ -8,7 +8,7 @@ namespace ArenaLS.Model
 		public readonly string Name;
 		public readonly int CastTime;
 		public readonly int SkillCooldown;
-		Action<Character, Option<Character>> Action;
+		public readonly Action<Character, Option<Character>> Action;
 
 		public int CurrentCooldown { get; private set; } = 0;
 		public bool UnderCooldown => CurrentCooldown > 0;
@@ -21,12 +21,11 @@ namespace ArenaLS.Model
 			Action = action;
 		}
 
-		internal void Use (Character caster, Option<Character> target)
+		internal void Use ()
 		{
 			if (CurrentCooldown != 0)
 				throw new InvalidOperationException ($"Attmpted to use Skill {Name} but CurrentCooldown was {CurrentCooldown}.");
 			CurrentCooldown = SkillCooldown;
-			Action (caster, target);
 		}
 
 		internal void Refresh (int v)

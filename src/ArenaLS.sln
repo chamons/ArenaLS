@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArenaLS.Windows", "ArenaLS.Windows\ArenaLS.Windows.csproj", "{388B36AD-A409-44E3-A7AA-F4BEC2269EE8}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArenaLS.Platform", "ArenaLS.Platform\ArenaLS.Platform.csproj", "{1F2A037D-51CD-408F-8E84-4FCEB34226F6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArenaLS", "ArenaLS\ArenaLS.csproj", "{82F830E1-C6BE-4235-B800-A3D7C215B31A}"
@@ -15,16 +13,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{84996B6A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArenaLS.UI", "ArenaLS.UI\ArenaLS.UI.csproj", "{F236A2BA-18DF-468E-9628-BECCB2F0B4B3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Platforms", "Platforms", "{01E598B3-48CF-4481-85D6-C28668A4BDF8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArenaLS.Mac", "ArenaLS.Mac\ArenaLS.Mac.csproj", "{51EAB5D5-DC0A-4B5F-B3D9-D352F3175724}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArenaLS.Windows", "ArenaLS.Windows\ArenaLS.Windows.csproj", "{388B36AD-A409-44E3-A7AA-F4BEC2269EE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{388B36AD-A409-44E3-A7AA-F4BEC2269EE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{388B36AD-A409-44E3-A7AA-F4BEC2269EE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{388B36AD-A409-44E3-A7AA-F4BEC2269EE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{388B36AD-A409-44E3-A7AA-F4BEC2269EE8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1F2A037D-51CD-408F-8E84-4FCEB34226F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1F2A037D-51CD-408F-8E84-4FCEB34226F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F2A037D-51CD-408F-8E84-4FCEB34226F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -41,11 +41,21 @@ Global
 		{F236A2BA-18DF-468E-9628-BECCB2F0B4B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F236A2BA-18DF-468E-9628-BECCB2F0B4B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F236A2BA-18DF-468E-9628-BECCB2F0B4B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51EAB5D5-DC0A-4B5F-B3D9-D352F3175724}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51EAB5D5-DC0A-4B5F-B3D9-D352F3175724}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51EAB5D5-DC0A-4B5F-B3D9-D352F3175724}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51EAB5D5-DC0A-4B5F-B3D9-D352F3175724}.Release|Any CPU.Build.0 = Release|Any CPU
+		{388B36AD-A409-44E3-A7AA-F4BEC2269EE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{388B36AD-A409-44E3-A7AA-F4BEC2269EE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{388B36AD-A409-44E3-A7AA-F4BEC2269EE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{388B36AD-A409-44E3-A7AA-F4BEC2269EE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{42C73B79-AEA6-43FE-AF99-D9E6A738FEB1} = {84996B6A-60D9-451A-A893-8D0721B8F79B}
+		{51EAB5D5-DC0A-4B5F-B3D9-D352F3175724} = {01E598B3-48CF-4481-85D6-C28668A4BDF8}
+		{388B36AD-A409-44E3-A7AA-F4BEC2269EE8} = {01E598B3-48CF-4481-85D6-C28668A4BDF8}
 	EndGlobalSection
 EndGlobal

@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{51EAB5D5-DC0A-4B5F-B3D9-D352F3175724}</ProjectGuid>
+    <ProjectTypeGuids>{A3F8F2AB-B479-4A4A-A458-A89E7DC349F1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ArenaLS.Mac</RootNamespace>
+    <AssemblyName>ArenaLS.Mac</AssemblyName>
+    <MonoMacResourcePrefix>Resources</MonoMacResourcePrefix>
+    <UseXamMacFullFramework>true</UseXamMacFullFramework>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkIdentifier>Xamarin.Mac</TargetFrameworkIdentifier>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <EnableCodeSigning>false</EnableCodeSigning>
+    <CodeSigningKey>Mac Developer</CodeSigningKey>
+    <CreatePackage>false</CreatePackage>
+    <EnablePackageSigning>false</EnablePackageSigning>
+    <IncludeMonoRuntime>false</IncludeMonoRuntime>
+    <UseSGen>true</UseSGen>
+    <UseRefCounting>true</UseRefCounting>
+    <HttpClientHandler></HttpClientHandler>
+    <LinkMode></LinkMode>
+    <XamMacArch></XamMacArch>
+    <AOTMode>None</AOTMode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <DefineConstants></DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <EnableCodeSigning>false</EnableCodeSigning>
+    <CreatePackage>true</CreatePackage>
+    <EnablePackageSigning>false</EnablePackageSigning>
+    <IncludeMonoRuntime>true</IncludeMonoRuntime>
+    <UseSGen>true</UseSGen>
+    <UseRefCounting>true</UseRefCounting>
+    <LinkMode>None</LinkMode>
+    <HttpClientHandler></HttpClientHandler>
+    <XamMacArch></XamMacArch>
+    <AOTMode>None</AOTMode>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.Mac" />
+    <Reference Include="SkiaSharp">
+      <HintPath>..\packages\SkiaSharp.1.60.0\lib\XamarinMac\SkiaSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp.Views.Mac">
+      <HintPath>..\packages\SkiaSharp.Views.1.60.0\lib\XamarinMac\SkiaSharp.Views.Mac.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon-128.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon-128%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon-16.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon-16%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon-256.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon-256%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon-32.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon-32%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon-512.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon-512%402x.png" />
+    <ImageAsset Include="Assets.xcassets\Contents.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+    <Folder Include="data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Info.plist" />
+    <None Include="Entitlements.plist" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <Compile Include="ViewController.cs" />
+    <Compile Include="ViewController.designer.cs">
+      <DependentUpon>ViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\ArenaLS.Windows\FileStorage.cs">
+      <Link>FileStorage.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="Main.storyboard" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ArenaLS\ArenaLS.csproj">
+      <Project>{82F830E1-C6BE-4235-B800-A3D7C215B31A}</Project>
+      <Name>ArenaLS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ArenaLS.Platform\ArenaLS.Platform.csproj">
+      <Project>{1F2A037D-51CD-408F-8E84-4FCEB34226F6}</Project>
+      <Name>ArenaLS.Platform</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ArenaLS.UI\ArenaLS.UI.csproj">
+      <Project>{F236A2BA-18DF-468E-9628-BECCB2F0B4B3}</Project>
+      <Name>ArenaLS.UI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\characters\animals1.png">
+      <Link>data\characters\animals1.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\characters\bonus1.png">
+      <Link>data\characters\bonus1.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\characters\chara2.png">
+      <Link>data\characters\chara2.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\characters\chara3.png">
+      <Link>data\characters\chara3.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\characters\chara4.png">
+      <Link>data\characters\chara4.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\characters\chara5.png">
+      <Link>data\characters\chara5.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\characters\military1.png">
+      <Link>data\characters\military1.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\characters\military2.png">
+      <Link>data\characters\military2.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\characters\military3.png">
+      <Link>data\characters\military3.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\characters\npc1.png">
+      <Link>data\characters\npc1.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\characters\npc2.png">
+      <Link>data\characters\npc2.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\characters\npc3.png">
+      <Link>data\characters\npc3.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\characters\npc4.png">
+      <Link>data\characters\npc4.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\dwarfelf\dwarf1.png">
+      <Link>data\characters\dwarf1.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\dwarfelf\dwarf2.png">
+      <Link>data\characters\dwarf2.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\dwarfelf\elf1.png">
+      <Link>data\characters\elf1.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\dwarfelf\elf2.png">
+      <Link>data\characters\elf2.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\farmform\tf_icon_32.png">
+      <Link>data\tf_icon_32.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\monsters\%24monster_bird1.png">
+      <Link>data\characters\%24monster_bird1.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\monsters\%24monster_bird2.png">
+      <Link>data\characters\%24monster_bird2.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\monsters\%24monster_bird3.png">
+      <Link>data\characters\%24monster_bird3.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\monsters\%24monster_boar.png">
+      <Link>data\characters\%24monster_boar.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\monsters\%24monster_cacto.png">
+      <Link>data\characters\%24monster_cacto.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\monsters\%24monster_dknight1.png">
+      <Link>data\characters\%24monster_dknight1.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\monsters\%24monster_dknight2.png">
+      <Link>data\characters\%24monster_dknight2.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\monsters\%24monster_elk.png">
+      <Link>data\characters\%24monster_elk.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\monsters\%24monster_golem1.png">
+      <Link>data\characters\%24monster_golem1.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\monsters\%24monster_golem2.png">
+      <Link>data\characters\%24monster_golem2.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\monsters\%24monster_lich.png">
+      <Link>data\characters\%24monster_lich.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\monsters\%24monster_lizardman1.png">
+      <Link>data\characters\%24monster_lizardman1.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\monsters\%24monster_lizardman2.png">
+      <Link>data\characters\%24monster_lizardman2.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\monsters\%24monster_minotaur.png">
+      <Link>data\characters\%24monster_minotaur.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\monsters\%24monster_phoenix.png">
+      <Link>data\characters\%24monster_phoenix.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\monsters\%24monster_raptor1.png">
+      <Link>data\characters\%24monster_raptor1.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\monsters\%24monster_raptor2.png">
+      <Link>data\characters\%24monster_raptor2.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\monsters\%24monster_treant.png">
+      <Link>data\characters\%24monster_treant.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\monsters\%24monster_wolf1.png">
+      <Link>data\characters\%24monster_wolf1.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\monsters\%24monster_wolf2.png">
+      <Link>data\characters\%24monster_wolf2.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\monsters\chara6.png">
+      <Link>data\characters\chara6.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\monsters\chara7.png">
+      <Link>data\characters\chara7.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\monsters\chara8.png">
+      <Link>data\characters\chara8.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\monsters\elemental.png">
+      <Link>data\characters\elemental.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\monsters\monster1.png">
+      <Link>data\characters\monster1.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\monsters\monster2.png">
+      <Link>data\characters\monster2.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\monsters\monster3.png">
+      <Link>data\characters\monster3.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\monsters\monster4.png">
+      <Link>data\characters\monster4.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\monsters\mount1.png">
+      <Link>data\characters\mount1.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\monsters\mount2.png">
+      <Link>data\characters\mount2.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\monsters\npc5.png">
+      <Link>data\characters\npc5.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\monsters\npc6.png">
+      <Link>data\characters\npc6.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\monsters\orc1.png">
+      <Link>data\characters\orc1.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\monsters\orc2.png">
+      <Link>data\characters\orc2.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\monsters\wizard.png">
+      <Link>data\characters\wizard.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\maps\beach\BeachMap.tmx">
+      <Link>data\maps\BeachMap.tmx</Link>
+    </BundleResource>
+    <None Include="packages.config" />
+    <BundleResource Include="..\..\..\ArenaLS-data\maps\beach\beach_tileset.tsx">
+      <Link>data\maps\beach_tileset.tsx</Link>
+      </BundleResource>
+    <BundleResource Include="..\..\..\ArenaLS-data\images\beach\beach_tileset.png">
+      <Link>data\maps\beach_tileset.png</Link>
+    </BundleResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
+</Project>

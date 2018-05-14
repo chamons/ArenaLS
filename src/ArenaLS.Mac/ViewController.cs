@@ -4,12 +4,13 @@ using AppKit;
 using CoreGraphics;
 using Foundation;
 
-using ArenaLS.Utilities;
-using ArenaLS.Views;
+using ArenaLS.UI;
 using SkiaSharp;
 using SkiaSharp.Views.Mac;
+using ArenaLS.Utilities;
 
-namespace ArenaLS.Mac {
+namespace ArenaLS.Mac
+{
 	public class CanvasView : SKCanvasView
 	{
 		public CanvasView (IntPtr p) : base (p)
@@ -41,8 +42,15 @@ namespace ArenaLS.Mac {
 		public event EventHandler<ClickEventArgs> OnPress;
 		public event EventHandler<KeyEventArgs> OnKeyDown;
 		public event EventHandler<EventArgs> OnQuit;
+		public event EventHandler<ClickEventArgs> OnRelease;
+		public event EventHandler<ClickEventArgs> OnDetailRelease;
 
 		SKCanvasView Canvas;
+		NSTimer Timer;
+
+		public long Frame { get; private set; } = 0;
+		public float Scale => 1;
+
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
@@ -114,18 +122,34 @@ namespace ArenaLS.Mac {
 			}
 		}
 
+		public override void MouseDown(NSEvent theEvent)
+		{
+			ClickArgs.Position = GetPositionFromEvent (theEvent);
+			OnPress?.Invoke (this, ClickArgs);
+		}
+
 		public override void RightMouseDown (NSEvent theEvent)
 		{
-			CGPoint p = theEvent.LocationInWindow;
-			ClickArgs.Position = new SKPointI((int)p.X, (int)View.Frame.Height - (int)p.Y);
+			ClickArgs.Position = GetPositionFromEvent (theEvent);
 			OnDetailPress?.Invoke(this, ClickArgs);
 		}
 
 		public override void MouseUp (NSEvent theEvent)
 		{
+			ClickArgs.Position = GetPositionFromEvent (theEvent);
+			OnRelease?.Invoke (this, ClickArgs);
+		}
+
+		public override void RightMouseUp(NSEvent theEvent)
+		{
+			ClickArgs.Position = GetPositionFromEvent (theEvent);
+			OnDetailRelease?.Invoke (this, ClickArgs);
+		}
+
+		SKPointI GetPositionFromEvent (NSEvent theEvent)
+		{
 			CGPoint p = theEvent.LocationInWindow;
-			ClickArgs.Position = new SKPointI((int)p.X, (int)View.Frame.Height - (int)p.Y);
-			OnPress?.Invoke(this, ClickArgs);
+			return new SKPointI ((int)p.X, (int)View.Frame.Height - (int)p.Y);
 		}
 
 		public void Invalidate ()
@@ -143,6 +167,14 @@ namespace ArenaLS.Mac {
 		{
 			PaintArgs.Surface = e.Surface;
 			OnPaint?.Invoke (this, PaintArgs);
+		}
+
+		public void StartAnimationTimer()
+		{
+			Timer = NSTimer.CreateRepeatingScheduledTimer (new TimeSpan (0, 0, 0, 0, 33), t => {
+				Frame++;
+				Invalidate (); // This is a bit lazy				
+			});
 		}
 	}
 }
